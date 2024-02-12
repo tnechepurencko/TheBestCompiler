@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using Cecilifier.Runtime;
 
 namespace ConsoleApp1.parser;
@@ -97,32 +98,33 @@ public class Parser
 		    true);
     }
     
-    public void GenerateMainModule(MethodDefinition funModule, JsonElement module)
+    public void GenerateMainModule(MethodDefinition md, JsonElement module)
     {
         string name = "main";
         
-        _typeDef.Methods.Add(funModule);
-        funModule.Body.InitLocals = true;
-        var funProc = funModule.Body.GetILProcessor();
+        _typeDef.Methods.Add(md);
+        md.Body.InitLocals = true;
+        var proc = md.Body.GetILProcessor();
         
-        _funs.Add(name, funModule);
-        _funsProcs.Add(name, funProc);
+        _funs.Add(name, md);
+        _funsProcs.Add(name, proc);
         
         var statements = module.GetProperty("Entry").GetProperty("Seq").GetProperty("Statements"); // arr
-        // GenerateBody(statements, null, funProc, funModule);
-        
-        for (int i = 0; i < statements.GetArrayLength(); i++)
-        {
-            // ParseStatement(statements[i]);
-            GenerateStatement(statements[i], null, funProc, funModule);
-        }
+        GenerateStatements(statements, md, proc);
 
-        funProc.Emit(OpCodes.Ret);
-        
+        proc.Emit(OpCodes.Ret);
+    }
+
+    public void GenerateStatements(JsonElement statements, MethodDefinition md, ILProcessor proc)
+    {
+	    for (int i = 0; i < statements.GetArrayLength(); i++)
+	    {
+		    GenerateStatement(statements[i], null, proc, md);
+	    }
     }
     
     /// GenerateBody
-    public void GenerateStatement(JsonElement stmt, TypeReference returnType, ILProcessor proc, MethodDefinition md)
+    public void GenerateStatement(JsonElement stmt, TypeReference? returnType, ILProcessor proc, MethodDefinition md)
     {
         if (stmt.TryGetProperty("D", out JsonElement decl))
         {
@@ -138,7 +140,43 @@ public class Parser
             return;
         }
         
+        if (stmt.TryGetProperty("Cond", out JsonElement cond) && stmt.TryGetProperty("Then", out JsonElement then) && 
+            stmt.TryGetProperty("Else", out JsonElement els))
+        {
+	        ParseIfElse(cond, then, els, md, proc);
+        }
+        
         Print("no");
+    }
+
+    public void ParseIfElse(JsonElement cond, JsonElement then, JsonElement? els, MethodDefinition md, ILProcessor proc)
+    {
+	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
+	    GenerateOperation(cond, type!, proc);
+		
+	    var elseEntryPoint = proc.Create(OpCodes.Nop); 
+	    proc.Emit(OpCodes.Brfalse, elseEntryPoint);
+	    
+	    var ifStatements = then.GetProperty("Statements"); // arr
+	    GenerateStatements(ifStatements, md, proc);
+	    
+	    var elseEnd = proc.Create(OpCodes.Nop);
+
+	    if (els.HasValue)
+	    {
+		    var endOfIf = proc.Create(OpCodes.Br, elseEnd);
+		    proc.Append(endOfIf);
+		    proc.Append(elseEntryPoint);
+		    // else
+		    var elsStatements = els.Value.GetProperty("Statements"); // arr
+		    GenerateStatements(elsStatements, md, proc);
+	    }
+	    else
+	    {
+		    proc.Append(elseEntryPoint);
+	    }
+	    proc.Append(elseEnd);
+	    md.Body.OptimizeMacros();
     }
 
     public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
@@ -148,7 +186,7 @@ public class Parser
 	    
 	    md.Body.Variables.Add(vd);
 	    
-	    GenerateOperation(value, name, type, proc);
+	    GenerateOperation(value, type, proc);
 	    proc.Emit(OpCodes.Stloc, vd);
 	    GeneratePrint(vd, type, proc);
 	    
@@ -159,7 +197,7 @@ public class Parser
 	    // }
     }
 
-    public void GenerateOperation(JsonElement operation, string name, string type, ILProcessor proc)
+    public void GenerateOperation(JsonElement operation, string type, ILProcessor proc)
     {
 	    // x // operation
 	    // y // operand
@@ -167,28 +205,28 @@ public class Parser
 	    if (operation.TryGetProperty("X", out JsonElement x) && operation.TryGetProperty("Y", out JsonElement y) && 
 	        operation.TryGetProperty("Op", out JsonElement op))
 	    {
-		    GenerateOperand(y, name, type, proc);
+		    GenerateOperand(y, type, proc);
 		    
 		    if (operation.TryGetProperty("X", out JsonElement xx) && operation.TryGetProperty("Y", out JsonElement xy) && 
 		        operation.TryGetProperty("Op", out JsonElement xop))
 		    {
-			    GenerateOperand(xy, name, type, proc);
+			    GenerateOperand(xy, type, proc);
 			    GenerateOperator(op.GetInt32(), proc);
 			    
-			    GenerateOperation(xx, name, type, proc);
+			    GenerateOperation(xx, type, proc);
 			    GenerateOperator(xop.GetInt32(), proc);
 			    return;
 		    }
 		    
-		    GenerateOperation(x, name, type, proc);
+		    GenerateOperation(x, type, proc);
 		    GenerateOperator(op.GetInt32(), proc);
 		    return;
 	    }
 	    
-	    GenerateOperand(operation, name, type, proc);
+	    GenerateOperand(operation, type, proc);
     }
     
-    public void GenerateOperand(JsonElement operand, string name, string type, ILProcessor proc)
+    public void GenerateOperand(JsonElement operand, string type, ILProcessor proc)
     {
 	    // x // operation
 	    // y // operand
@@ -196,7 +234,7 @@ public class Parser
 	    if (operand.TryGetProperty("X", out JsonElement x) && operand.TryGetProperty("Y", out JsonElement y) &&
 	        operand.TryGetProperty("Op", out JsonElement op))
 	    { // if operation
-		    GenerateOperation(operand, name, type, proc); 
+		    GenerateOperation(operand, type, proc); 
 		    return;
 	    }
 	    
@@ -510,7 +548,7 @@ public class Parser
 	    string? name = l.GetProperty("Name").GetString();
 	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
 
-	    GenerateOperation(r, name!, type!, proc);
+	    GenerateOperation(r, type!, proc);
 	    proc.Emit(OpCodes.Stloc, _vars[name!]);
 
 	    GeneratePrint(_vars[name!], type!, proc);
