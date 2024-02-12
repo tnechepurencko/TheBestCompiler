@@ -34,7 +34,7 @@ public class Parser
         JsonElement root = doc.RootElement;
         _ast = root;
 
-        InitDS();
+        InitDs();
 
         // _generator = new Generator();
         var mp = new ModuleParameters { Architecture = TargetArchitecture.AMD64, Kind =  ModuleKind.Console, ReflectionImporterProvider = new SystemPrivateCoreLibFixerReflectionProvider() };
@@ -57,7 +57,7 @@ public class Parser
         Gen();
     }
 
-    private void InitDS()
+    private void InitDs()
     {
 	    _funs = new Dictionary<string, MethodDefinition>();
 	    _funsProcs = new Dictionary<string, ILProcessor>();
@@ -124,17 +124,14 @@ public class Parser
     /// GenerateBody
     public void GenerateStatement(JsonElement stmt, TypeReference returnType, ILProcessor proc, MethodDefinition md)
     {
-        JsonElement decl;
-        if (stmt.TryGetProperty("D", out decl))
+        if (stmt.TryGetProperty("D", out JsonElement decl))
         {
             // declaration processing
             ParseDecl(decl, md, proc);
             return;
         }
         
-        JsonElement lAssig;
-        JsonElement rAssig;
-        if (stmt.TryGetProperty("L", out lAssig) && stmt.TryGetProperty("R", out rAssig))
+        if (stmt.TryGetProperty("L", out JsonElement lAssig) && stmt.TryGetProperty("R", out JsonElement rAssig))
         {
             // assignment processing
             ParseAssignment(lAssig, rAssig, proc);
@@ -147,23 +144,14 @@ public class Parser
     public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
     {
 	    var vd = new VariableDefinition(GetTypeRef(type));
+	    _vars.Add(name, vd);
+	    
 	    md.Body.Variables.Add(vd);
 	    
-	    JsonElement x;
-	    JsonElement y;
-	    JsonElement op;
-	    if (value.TryGetProperty("X", out x) && value.TryGetProperty("Y", out y) && 
-	        value.TryGetProperty("Op", out op))
-	    {
-		    ParsePrimitive(value, name, type, vd, proc); // todo wrong
-		    // ParseExpr(x);
-		    // int opCode = op.GetInt32();
-		    // ParseExpr(y);
-		    return;
-	    }
-        
-	    ParsePrimitive(value, name, type, vd, proc);
-	    _vars.Add(name, vd);
+	    GenerateOperation(value, name, type, proc);
+	    proc.Emit(OpCodes.Stloc, vd);
+	    GeneratePrint(vd, type, proc);
+	    
 	    // if (type!.Equals("Цел64"))
 	    // {
 		   //  long value = value.GetProperty("IntVal").GetInt64();
@@ -171,31 +159,18 @@ public class Parser
 	    // }
     }
 
-    public void ParsePrimitive(JsonElement value, string name, string type, VariableDefinition vd, ILProcessor proc)
-    {
-	    {
-		    
-		    GenerateOperation(value, name, type, proc);
-		    proc.Emit(OpCodes.Stloc, vd);
-		    GeneratePrint(vd, type, proc);
-	    }
-    }
-    
     public void GenerateOperation(JsonElement operation, string name, string type, ILProcessor proc)
     {
-	    JsonElement x; // operation
-	    JsonElement y; // operand
-	    JsonElement op; // operator
-	    if (operation.TryGetProperty("X", out x) && operation.TryGetProperty("Y", out y) && 
-	        operation.TryGetProperty("Op", out op))
+	    // x // operation
+	    // y // operand
+	    // op // operator
+	    if (operation.TryGetProperty("X", out JsonElement x) && operation.TryGetProperty("Y", out JsonElement y) && 
+	        operation.TryGetProperty("Op", out JsonElement op))
 	    {
 		    GenerateOperand(y, name, type, proc);
 		    
-		    JsonElement xx;
-		    JsonElement xy;
-		    JsonElement xop;
-		    if (operation.TryGetProperty("X", out xx) && operation.TryGetProperty("Y", out xy) && 
-		        operation.TryGetProperty("Op", out xop))
+		    if (operation.TryGetProperty("X", out JsonElement xx) && operation.TryGetProperty("Y", out JsonElement xy) && 
+		        operation.TryGetProperty("Op", out JsonElement xop))
 		    {
 			    GenerateOperand(xy, name, type, proc);
 			    GenerateOperator(op.GetInt32(), proc);
@@ -215,11 +190,11 @@ public class Parser
     
     public void GenerateOperand(JsonElement operand, string name, string type, ILProcessor proc)
     {
-	    JsonElement x; // operation
-	    JsonElement y; // operand
-	    JsonElement op; // operator
-	    if (operand.TryGetProperty("X", out x) && operand.TryGetProperty("Y", out y) &&
-	        operand.TryGetProperty("Op", out op))
+	    // x // operation
+	    // y // operand
+	    // op // operator
+	    if (operand.TryGetProperty("X", out JsonElement x) && operand.TryGetProperty("Y", out JsonElement y) &&
+	        operand.TryGetProperty("Op", out JsonElement op))
 	    { // if operation
 		    GenerateOperation(operand, name, type, proc); 
 		    return;
@@ -503,10 +478,11 @@ public class Parser
     {
         string? type = expr.GetProperty("Typ").GetProperty("Name").GetString();
         
-        JsonElement x;
-        JsonElement y;
-        JsonElement op;
-        if (expr.TryGetProperty("X", out x) && expr.TryGetProperty("Y", out y) && expr.TryGetProperty("Op", out op))
+        // x // operation
+        // y // operand
+        // op // operator
+        if (expr.TryGetProperty("X", out JsonElement x) && expr.TryGetProperty("Y", out JsonElement y) && 
+            expr.TryGetProperty("Op", out JsonElement op))
         {
             ParseExpr(x);
             int opCode = op.GetInt32();
