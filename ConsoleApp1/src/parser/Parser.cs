@@ -137,7 +137,7 @@ public class Parser
         if (stmt.TryGetProperty("L", out lAssig) && stmt.TryGetProperty("R", out rAssig))
         {
             // assignment processing
-            ParseAssignment(lAssig, rAssig);
+            ParseAssignment(lAssig, rAssig, proc);
             return;
         }
         
@@ -146,7 +146,8 @@ public class Parser
 
     public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
     {
-	    // string? type = value.GetProperty("Typ").GetProperty("Name").GetString();
+	    var vd = new VariableDefinition(GetTypeRef(type));
+	    md.Body.Variables.Add(vd);
 	    
 	    JsonElement x;
 	    JsonElement y;
@@ -154,14 +155,15 @@ public class Parser
 	    if (value.TryGetProperty("X", out x) && value.TryGetProperty("Y", out y) && 
 	        value.TryGetProperty("Op", out op))
 	    {
-		    ParsePrimitive(value, name, type, md, proc);
+		    ParsePrimitive(value, name, type, vd, proc); // todo wrong
 		    // ParseExpr(x);
 		    // int opCode = op.GetInt32();
 		    // ParseExpr(y);
 		    return;
 	    }
         
-	    ParsePrimitive(value, name, type, md, proc);
+	    ParsePrimitive(value, name, type, vd, proc);
+	    _vars.Add(name, vd);
 	    // if (type!.Equals("Цел64"))
 	    // {
 		   //  long value = value.GetProperty("IntVal").GetInt64();
@@ -169,18 +171,13 @@ public class Parser
 	    // }
     }
 
-    public void ParsePrimitive(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
+    public void ParsePrimitive(JsonElement value, string name, string type, VariableDefinition vd, ILProcessor proc)
     {
 	    {
-		    var varDef = new VariableDefinition(GetTypeRef(type));
-		    md.Body.Variables.Add(varDef);
 		    
 		    GenerateOperation(value, name, type, proc);
-		    proc.Emit(OpCodes.Stloc, varDef);
-		    GeneratePrint(varDef, "System.Int32", proc);
-
-		    _vars.Add(name, varDef);
-		    // _varsTypes.Add(name, type);
+		    proc.Emit(OpCodes.Stloc, vd);
+		    GeneratePrint(vd, type, proc);
 	    }
     }
     
@@ -523,38 +520,24 @@ public class Parser
             // _generator.GenerateInt64(value);
         }
     }
-
-    // private void ParseStatement(JsonElement stmt)
-    // {
-    //     JsonElement decl;
-    //     if (stmt.TryGetProperty("D", out decl))
-    //     {
-    //         // declaration processing
-    //         ParseDecl(decl);
-    //         return;
-    //     }
-    //     
-    //     JsonElement lAssig;
-    //     JsonElement rAssig;
-    //     if (stmt.TryGetProperty("L", out lAssig) && stmt.TryGetProperty("R", out rAssig))
-    //     {
-    //         // assignment processing
-    //         ParseAssignment(lAssig, rAssig);
-    //         return;
-    //     }
-    //     
-    //     Print("no");
-    // }
     
     public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
     {
+	    var origType = "System.Int32"; // todo change
+	    
 	    proc.Emit(OpCodes.Ldloc, varDef);
-	    proc.Emit(OpCodes.Call, _asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, type)));
+	    proc.Emit(OpCodes.Call, _asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, origType)));
     }
 
-    private void ParseAssignment(JsonElement l, JsonElement r)
+    private void ParseAssignment(JsonElement l, JsonElement r, ILProcessor proc)
     {
-        
+	    string? name = l.GetProperty("Name").GetString();
+	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
+
+	    GenerateOperation(r, name!, type!, proc);
+	    proc.Emit(OpCodes.Stloc, _vars[name!]);
+
+	    GeneratePrint(_vars[name!], type!, proc);
     }
 
     private void Print(Object o)
