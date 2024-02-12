@@ -150,7 +150,73 @@ public class Parser
 	        ParseWhile(wCond, seq, md, proc);
         }
         
+        if (stmt.TryGetProperty("X", out JsonElement x) && stmt.TryGetProperty("Cases", out JsonElement cases) && 
+            stmt.TryGetProperty("Else", out JsonElement sEls))
+        {
+	        ParseSwitch(x, cases, sEls, md, proc);
+        }
+        
         Print("no");
+    }
+
+    public void ParseSwitch(JsonElement x, JsonElement cases, JsonElement els, MethodDefinition md, ILProcessor proc)
+    {
+	    // todo if a.	выбор по выражению (§6.8.1)
+	    GenerateExpSwitch(x, cases, els, md, proc);
+
+	    // todo if b.	выбор по предикатам (§6.8.2) 
+	    // todo if c.	выбор по типу (§6.8.3)
+    }
+
+    public void GenerateExpSwitch(JsonElement x, JsonElement cases, JsonElement els, MethodDefinition md,
+	    ILProcessor proc)
+    {
+	    var name = x.GetProperty("Name").GetString();
+	    var type = x.GetProperty("Typ").GetProperty("Name").GetString();
+	    
+	    var switchCondition = new VariableDefinition(GetTypeRef(type!));
+	    md.Body.Variables.Add(switchCondition);
+	    proc.Emit(OpCodes.Ldloc, _vars[name!]);
+	    proc.Emit(OpCodes.Stloc, switchCondition);
+	    
+	    var endOfSwitch = proc.Create(OpCodes.Nop);
+	    var defaultCase = proc.Create(OpCodes.Nop);
+	    
+	    // generate instructions
+	    Instruction?[] instructions = new Instruction?[cases.GetArrayLength()];
+	    for (int i = 0; i < cases.GetArrayLength(); i++)
+	    {
+		    instructions[i] = proc.Create(OpCodes.Nop);
+	    }
+	    
+	    // generate conditions
+	    for (int i = 0; i < cases.GetArrayLength(); i++)
+	    {
+		    var conds = cases[i].GetProperty("Exprs"); // arr
+		    JsonElement cond = conds[0]; // todo check why 0 (can there be more?)
+		    
+		    proc.Emit(OpCodes.Ldloc, switchCondition);
+		    GenerateOperation(cond, type!, proc);
+		    proc.Emit(OpCodes.Beq_S, instructions[i]);
+	    }
+	    
+	    proc.Emit(OpCodes.Br, defaultCase);
+	    
+	    // generate sequence
+	    for (int i = 0; i < cases.GetArrayLength(); i++)
+	    {
+		    proc.Append(instructions[i]);
+		    var statements = cases[i].GetProperty("Seq").GetProperty("Statements");
+		    GenerateStatements(statements, md, proc);
+		    proc.Emit(OpCodes.Br, endOfSwitch);
+	    }
+	    
+	    // generate default block
+	    proc.Append(defaultCase);
+	    var elseStatements = els.GetProperty("Statements");
+	    GenerateStatements(elseStatements, md, proc);
+	    proc.Emit(OpCodes.Br, endOfSwitch);
+	    proc.Append(endOfSwitch);
     }
 
     public void ParseWhile(JsonElement cond, JsonElement seq, MethodDefinition md, ILProcessor proc)
