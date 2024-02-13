@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
+using ConsoleApp1.generator.print;
 
 namespace ConsoleApp1.parser;
 
@@ -12,9 +13,8 @@ using Mono.Cecil.Rocks;
 public class Parser
 {
     private readonly JsonElement _ast;
-    // private Generator _generator;
     
-    private AssemblyDefinition _asm;
+    public static AssemblyDefinition Asm;
     private TypeDefinition _typeDef;
     private MethodDefinition _mainModule;
     private ILProcessor _mainProc;
@@ -26,7 +26,7 @@ public class Parser
     private Dictionary<string, MethodDefinition> _funs;
     private Dictionary<string, ILProcessor> _funsProcs;
     // private Dictionary<string, Type> _varsTypes;
-    private Dictionary<string, VariableDefinition> _vars;
+    public static Dictionary<string, VariableDefinition> Vars;
     private Dictionary<string, Tuple<int, ParameterDefinition, Type>> _paramsDefinitions;
     
     public Parser(string path)
@@ -40,20 +40,20 @@ public class Parser
 
         // _generator = new Generator();
         var mp = new ModuleParameters { Architecture = TargetArchitecture.AMD64, Kind =  ModuleKind.Console, ReflectionImporterProvider = new SystemPrivateCoreLibFixerReflectionProvider() };
-        _asm = AssemblyDefinition.CreateAssembly(new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0")), Path.GetFileName(_path), mp);
+        Asm = AssemblyDefinition.CreateAssembly(new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0")), Path.GetFileName(_path), mp);
 	    
-        _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, _asm.MainModule.TypeSystem.Object);
-        _asm.MainModule.Types.Add(_typeDef);
+        _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
+        Asm.MainModule.Types.Add(_typeDef);
         
-        _mainRoutineModule = new MethodDefinition("mainRoutineModule", MethodAttributes.Assembly | MethodAttributes.Static | MethodAttributes.HideBySig, _asm.MainModule.TypeSystem.Void);
+        _mainRoutineModule = new MethodDefinition("mainRoutineModule", MethodAttributes.Assembly | MethodAttributes.Static | MethodAttributes.HideBySig, Asm.MainModule.TypeSystem.Void);
         GenerateMainModule(_mainRoutineModule, _ast);
         
-        _mainModule = new MethodDefinition("Main", MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig, _asm.MainModule.TypeSystem.Void);
+        _mainModule = new MethodDefinition("Main", MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig, Asm.MainModule.TypeSystem.Void);
         _typeDef.Methods.Add(_mainModule);
         _mainModule.Body.InitLocals = true;
         _mainProc = _mainModule.Body.GetILProcessor();
 	    
-        var mainParams = new ParameterDefinition("args", ParameterAttributes.None, _asm.MainModule.TypeSystem.String.MakeArrayType());
+        var mainParams = new ParameterDefinition("args", ParameterAttributes.None, Asm.MainModule.TypeSystem.String.MakeArrayType());
         _mainModule.Parameters.Add(mainParams);
         
         Gen();
@@ -63,7 +63,7 @@ public class Parser
     {
 	    _funs = new Dictionary<string, MethodDefinition>();
 	    _funsProcs = new Dictionary<string, ILProcessor>();
-	    _vars = new Dictionary<string, VariableDefinition>();
+	    Vars = new Dictionary<string, VariableDefinition>();
 	    _paramsDefinitions = new Dictionary<string, Tuple<int, ParameterDefinition, Type>>();
 
     }
@@ -84,15 +84,15 @@ public class Parser
 	    _mainProc.Emit(OpCodes.Call, _mainRoutineModule);
 	    _mainProc.Emit(OpCodes.Ret);
 
-	    var ctorMethod = new MethodDefinition(".ctor", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.RTSpecialName | MethodAttributes.SpecialName, _asm.MainModule.TypeSystem.Void);
+	    var ctorMethod = new MethodDefinition(".ctor", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.RTSpecialName | MethodAttributes.SpecialName, Asm.MainModule.TypeSystem.Void);
 	    _typeDef.Methods.Add(ctorMethod);
 	    var ctorProc = ctorMethod.Body.GetILProcessor();
 	    ctorProc.Emit(OpCodes.Ldarg_0);
-	    ctorProc.Emit(OpCodes.Call, _asm.MainModule.ImportReference(TypeHelpers.DefaultCtorFor(_typeDef.BaseType)));
+	    ctorProc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.DefaultCtorFor(_typeDef.BaseType)));
 	    ctorProc.Emit(OpCodes.Ret);
-	    _asm.EntryPoint = _mainModule;
+	    Asm.EntryPoint = _mainModule;
       
-	    _asm.Write(_path);
+	    Asm.Write(_path);
 	    File.Copy(
 		    Path.ChangeExtension(typeof(Parser).Assembly.Location, ".runtimeconfig.json"),
 		    Path.ChangeExtension(_path, ".runtimeconfig.json"),
@@ -177,7 +177,7 @@ public class Parser
 	    
 	    var switchCondition = new VariableDefinition(GetTypeRef(type!));
 	    md.Body.Variables.Add(switchCondition);
-	    proc.Emit(OpCodes.Ldloc, _vars[name!]);
+	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
 	    proc.Emit(OpCodes.Stloc, switchCondition);
 	    
 	    var endOfSwitch = proc.Create(OpCodes.Nop);
@@ -198,7 +198,6 @@ public class Parser
 		    
 		    proc.Emit(OpCodes.Ldloc, switchCondition);
 		    new Expr(cond).GenerateExpr(proc);
-		    // GenerateOperation(cond, type!, proc);
 		    proc.Emit(OpCodes.Beq_S, instructions[i]);
 	    }
 	    
@@ -223,12 +222,12 @@ public class Parser
 
     public void ParseWhile(JsonElement cond, JsonElement seq, MethodDefinition md, ILProcessor proc)
     {
-	    var condDef = new VariableDefinition(_asm.MainModule.TypeSystem.Boolean);
+	    var condDef = new VariableDefinition(Asm.MainModule.TypeSystem.Boolean);
 	    md.Body.Variables.Add(condDef);
 	    GenerateCondition(cond, proc, condDef);
 	    
 	    // int i = 0;
-	    var var_i = new VariableDefinition(_asm.MainModule.TypeSystem.Int32);
+	    var var_i = new VariableDefinition(Asm.MainModule.TypeSystem.Int32);
 	    md.Body.Variables.Add(var_i);
 	    proc.Emit(OpCodes.Ldc_I4, 0);
 	    proc.Emit(OpCodes.Stloc, var_i);
@@ -260,16 +259,14 @@ public class Parser
     public void GenerateCondition(JsonElement cond, ILProcessor proc, VariableDefinition condDef)
     {
 	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
-	    if (type != null) new Expr(cond).GenerateExpr(proc); //GenerateOperation(cond, type, proc);
+	    if (type != null) new Expr(cond).GenerateExpr(proc);
 	    proc.Emit(OpCodes.Stloc, condDef);
     }
 
     // todo check whether elif exists
     public void ParseIfElse(JsonElement cond, JsonElement then, JsonElement? els, MethodDefinition md, ILProcessor proc)
     {
-	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
 	    new Expr(cond).GenerateExpr(proc);
-	    // GenerateOperation(cond, type!, proc);
 		
 	    var elseEntryPoint = proc.Create(OpCodes.Nop); 
 	    proc.Emit(OpCodes.Brfalse, elseEntryPoint);
@@ -296,24 +293,23 @@ public class Parser
 	    md.Body.OptimizeMacros();
     }
 
-    public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
-    {
-	    var vd = new VariableDefinition(GetTypeRef(type));
-	    _vars.Add(name, vd);
-	    
-	    md.Body.Variables.Add(vd);
-	    
-	    new Expr(value).GenerateExpr(proc);
-	    // GenerateOperation(value, type, proc);
-	    proc.Emit(OpCodes.Stloc, vd);
-	    GeneratePrint(vd, type, proc);
-	    
-	    // if (type!.Equals("Цел64"))
-	    // {
-		   //  long value = value.GetProperty("IntVal").GetInt64();
-		   //  // _generator.GenerateInt64(value);
-	    // }
-    }
+    // public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
+    // {
+	   //  var vd = new VariableDefinition(GetTypeRef(type));
+	   //  _vars.Add(name, vd);
+	   //  
+	   //  md.Body.Variables.Add(vd);
+	   //  
+	   //  new Expr(value).GenerateExpr(proc);
+	   //  proc.Emit(OpCodes.Stloc, vd);
+	   //  GeneratePrint(vd, type, proc);
+	   //  
+	   //  // if (type!.Equals("Цел64"))
+	   //  // {
+		  //  //  long value = value.GetProperty("IntVal").GetInt64();
+		  //  //  // _generator.GenerateInt64(value);
+	   //  // }
+    // }
 
     // public void GenerateOperation(JsonElement operation, string type, ILProcessor proc)
     // {
@@ -447,11 +443,16 @@ public class Parser
 	    }
     }
     
-    public TypeReference GetTypeRef(string type)
+    public TypeReference? GetTypeRef(string type)
     {
 	    if (type.Equals("Цел64"))
 	    {
-		    return _asm.MainModule.TypeSystem.Int32;
+		    return Asm.MainModule.TypeSystem.Int32;
+	    }
+
+	    if (type.Equals("Строка"))
+	    {
+		    return Asm.MainModule.TypeSystem.String;
 	    }
 	    
 	    // if (type._primitiveType._isReal)
@@ -470,11 +471,17 @@ public class Parser
     {  
 	    string? name = decl.GetProperty("Name").GetString();
 	    string? type = decl.GetProperty("Typ").GetProperty("Name").GetString();
-	    Print(name);
-	    Print(type);
 	    
 	    JsonElement value = decl.GetProperty("Init");
-	    ParseValue(value, name, type, md, proc);
+	    
+	    var vd = new VariableDefinition(GetTypeRef(type!));
+	    Vars.Add(name!, vd);
+	    
+	    md.Body.Variables.Add(vd);
+	    
+	    new Expr(value).GenerateExpr(proc);
+	    proc.Emit(OpCodes.Stloc, vd);
+	    Out.GeneratePrint(vd, type!, proc);
 	    
 	    
 	    // else if (type._arrayType != null)
@@ -616,13 +623,13 @@ public class Parser
         }
     }
     
-    public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
-    {
-	    var origType = "System.Int32"; // todo change
-	    
-	    proc.Emit(OpCodes.Ldloc, varDef);
-	    proc.Emit(OpCodes.Call, _asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, origType)));
-    }
+    // public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
+    // {
+	   //  var origType = "System.Int32"; // todo change
+	   //  
+	   //  proc.Emit(OpCodes.Ldloc, varDef);
+	   //  proc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, origType)));
+    // }
 
     private void ParseAssignment(JsonElement l, JsonElement r, ILProcessor proc)
     {
@@ -630,10 +637,9 @@ public class Parser
 	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
 
 	    new Expr(r).GenerateExpr(proc);
-	    // GenerateOperation(r, type!, proc);
-	    proc.Emit(OpCodes.Stloc, _vars[name!]);
+	    proc.Emit(OpCodes.Stloc, Vars[name!]);
 
-	    GeneratePrint(_vars[name!], type!, proc);
+	    Out.GeneratePrint(Vars[name!], type!, proc);
     }
 
     private void Print(Object o)
