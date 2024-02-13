@@ -6,7 +6,7 @@ public class Program
 {  
     public static void Main(string[] args)
     {
-        string ast1 = "../../../ast/ast10str.json";
+        string ast1 = "../../../ast/ast9exc.json";
         // string ast1 = "../../../ast/ast3assig.json";
         Parser parser = new Parser(ast1);
     }  

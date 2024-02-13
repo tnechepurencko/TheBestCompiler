@@ -149,15 +149,37 @@ public class Parser
         if (stmt.TryGetProperty("Cond", out JsonElement wCond) && stmt.TryGetProperty("Seq", out JsonElement seq))
         {
 	        ParseWhile(wCond, seq, md, proc);
+	        return;
         }
         
         if (stmt.TryGetProperty("X", out JsonElement x) && stmt.TryGetProperty("Cases", out JsonElement cases) && 
             stmt.TryGetProperty("Else", out JsonElement sEls))
         {
 	        ParseSwitch(x, cases, sEls, md, proc);
+	        return;
+        }
+        
+        // ADD ANYTHING WITH "X" HERE
+        
+        if (stmt.TryGetProperty("X", out JsonElement ex)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
+        {
+	        ParseException(ex, proc);
+	        return;
         }
         
         Print("no");
+    }
+
+    public void ParseException(JsonElement x, ILProcessor proc)
+    {
+	    Value.GenerateValue(x, proc);
+	    proc.Emit(OpCodes.Newobj, Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(
+		    typeof(System.Exception), 
+		    ".ctor",
+		    System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public,
+		    "System.String")));
+	    
+	    proc.Emit(OpCodes.Throw);
     }
 
     public void ParseSwitch(JsonElement x, JsonElement cases, JsonElement els, MethodDefinition md, ILProcessor proc)
