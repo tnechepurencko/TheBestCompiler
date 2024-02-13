@@ -28,6 +28,12 @@ public class Parser
     // private Dictionary<string, Type> _varsTypes;
     public static Dictionary<string, VariableDefinition> Vars;
     private Dictionary<string, Tuple<int, ParameterDefinition, Type>> _paramsDefinitions;
+
+    private static readonly Dictionary<string, TypeReference> TypesReferences = new()
+    {
+	    { "Цел64", Asm.MainModule.TypeSystem.Int32 }, // todo change int32
+	    { "Строка", Asm.MainModule.TypeSystem.String }
+    };
     
     public Parser(string path)
     {
@@ -197,7 +203,7 @@ public class Parser
 	    var name = x.GetProperty("Name").GetString();
 	    var type = x.GetProperty("Typ").GetProperty("Name").GetString();
 	    
-	    var switchCondition = new VariableDefinition(GetTypeRef(type!));
+	    var switchCondition = new VariableDefinition(TypesReferences[type!]);
 	    md.Body.Variables.Add(switchCondition);
 	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
 	    proc.Emit(OpCodes.Stloc, switchCondition);
@@ -464,30 +470,6 @@ public class Parser
 		    proc.Emit(OpCodes.Ldarg, i);
 	    }
     }
-    
-    public TypeReference? GetTypeRef(string type)
-    {
-	    if (type.Equals("Цел64"))
-	    {
-		    return Asm.MainModule.TypeSystem.Int32;
-	    }
-
-	    if (type.Equals("Строка"))
-	    {
-		    return Asm.MainModule.TypeSystem.String;
-	    }
-	    
-	    // if (type._primitiveType._isReal)
-	    // {
-		   //  return _asm.MainModule.TypeSystem.Double;
-	    // }
-	    // if (type._primitiveType._isBoolean)
-	    // {
-		   //  return _asm.MainModule.TypeSystem.Boolean;
-	    // }
-	    
-	    return null;
-    }
 
     public void GenerateVarDecl(JsonElement decl, MethodDefinition md, ILProcessor proc)
     {  
@@ -496,7 +478,7 @@ public class Parser
 	    
 	    JsonElement value = decl.GetProperty("Init");
 	    
-	    var vd = new VariableDefinition(GetTypeRef(type!));
+	    var vd = new VariableDefinition(TypesReferences[type!]);
 	    Vars.Add(name!, vd);
 	    
 	    md.Body.Variables.Add(vd);
@@ -597,12 +579,6 @@ public class Parser
 		   //  _vars.Add(name, recordDefinition);
 	    // }
     }
-
-    public void GenerateInt64(long value)
-    {
-        Print(value);
-    }
-    
     
     
     
