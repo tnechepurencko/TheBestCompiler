@@ -40,7 +40,7 @@
         {
           "Pos": 3145729,
           "Cond": {
-            "Pos": 3604481,
+            "Pos": 3735553,
             "Typ": {
               "Pos": 0,
               "Name": "Лог"
@@ -52,38 +52,16 @@
                 "Pos": 0,
                 "Name": "Цел64"
               },
-              "ReadOnly": false,
-              "Name": "h",
-              "Obj": {
-                "Pos": 2359297,
-                "Name": "h",
-                "Typ": {
-                  "Pos": 0,
-                  "Name": "Цел64"
-                },
-                "Host": null,
-                "Exported": false,
-                "Init": {
-                  "Pos": 2686977,
-                  "Typ": {
-                    "Pos": 0,
-                    "Name": "Цел64"
-                  },
-                  "ReadOnly": true,
-                  "Kind": 0,
-                  "IntVal": 7,
-                  "WordVal": 0,
-                  "FloatStr": "",
-                  "StrVal": null
-                },
-                "Later": false,
-                "AssignOnce": false,
-                "OutParam": false
-              }
+              "ReadOnly": true,
+              "Kind": 0,
+              "IntVal": 666,
+              "WordVal": 0,
+              "FloatStr": "",
+              "StrVal": null
             },
             "Op": 31,
             "Y": {
-              "Pos": 3801089,
+              "Pos": 3932161,
               "Typ": {
                 "Pos": 0,
                 "Name": "Цел64"
@@ -97,12 +75,12 @@
             }
           },
           "Then": {
-            "Pos": 4521985,
+            "Pos": 4653057,
             "Statements": [
               {
-                "Pos": 4653057,
+                "Pos": 4784129,
                 "L": {
-                  "Pos": 4521985,
+                  "Pos": 4653057,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
@@ -137,7 +115,7 @@
                   }
                 },
                 "R": {
-                  "Pos": 4849665,
+                  "Pos": 4980737,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
@@ -154,12 +132,12 @@
             "Inner": null
           },
           "Else": {
-            "Pos": 6553601,
+            "Pos": 6684673,
             "Statements": [
               {
-                "Pos": 6684673,
+                "Pos": 6815745,
                 "L": {
-                  "Pos": 6553601,
+                  "Pos": 6684673,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
@@ -194,7 +172,7 @@
                   }
                 },
                 "R": {
-                  "Pos": 6881281,
+                  "Pos": 7012353,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"

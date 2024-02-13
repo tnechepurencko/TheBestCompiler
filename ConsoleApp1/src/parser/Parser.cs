@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
 using Cecilifier.Runtime;
+using ConsoleApp1.generator.expr;
 
 namespace ConsoleApp1.parser;
 
@@ -196,7 +197,8 @@ public class Parser
 		    JsonElement cond = conds[0]; // todo check why 0 (can there be more?)
 		    
 		    proc.Emit(OpCodes.Ldloc, switchCondition);
-		    GenerateOperation(cond, type!, proc);
+		    new Expr(cond).GenerateExpr(proc);
+		    // GenerateOperation(cond, type!, proc);
 		    proc.Emit(OpCodes.Beq_S, instructions[i]);
 	    }
 	    
@@ -258,7 +260,7 @@ public class Parser
     public void GenerateCondition(JsonElement cond, ILProcessor proc, VariableDefinition condDef)
     {
 	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
-	    if (type != null) GenerateOperation(cond, type, proc);
+	    if (type != null) new Expr(cond).GenerateExpr(proc); //GenerateOperation(cond, type, proc);
 	    proc.Emit(OpCodes.Stloc, condDef);
     }
 
@@ -266,7 +268,8 @@ public class Parser
     public void ParseIfElse(JsonElement cond, JsonElement then, JsonElement? els, MethodDefinition md, ILProcessor proc)
     {
 	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
-	    GenerateOperation(cond, type!, proc);
+	    new Expr(cond).GenerateExpr(proc);
+	    // GenerateOperation(cond, type!, proc);
 		
 	    var elseEntryPoint = proc.Create(OpCodes.Nop); 
 	    proc.Emit(OpCodes.Brfalse, elseEntryPoint);
@@ -300,7 +303,8 @@ public class Parser
 	    
 	    md.Body.Variables.Add(vd);
 	    
-	    GenerateOperation(value, type, proc);
+	    new Expr(value).GenerateExpr(proc);
+	    // GenerateOperation(value, type, proc);
 	    proc.Emit(OpCodes.Stloc, vd);
 	    GeneratePrint(vd, type, proc);
 	    
@@ -311,108 +315,113 @@ public class Parser
 	    // }
     }
 
-    public void GenerateOperation(JsonElement operation, string type, ILProcessor proc)
-    {
-	    // x // operation
-	    // y // operand
-	    // op // operator
-	    if (operation.TryGetProperty("X", out JsonElement x) && operation.TryGetProperty("Y", out JsonElement y) && 
-	        operation.TryGetProperty("Op", out JsonElement op))
-	    {
-		    GenerateOperand(y, type, proc);
-		    
-		    if (operation.TryGetProperty("X", out JsonElement xx) && operation.TryGetProperty("Y", out JsonElement xy) && 
-		        operation.TryGetProperty("Op", out JsonElement xop))
-		    {
-			    GenerateOperand(xy, type, proc);
-			    GenerateOperator(op.GetInt32(), proc);
-			    
-			    GenerateOperation(xx, type, proc);
-			    GenerateOperator(xop.GetInt32(), proc);
-			    return;
-		    }
-		    
-		    GenerateOperation(x, type, proc);
-		    GenerateOperator(op.GetInt32(), proc);
-		    return;
-	    }
-	    
-	    GenerateOperand(operation, type, proc);
-    }
+    // public void GenerateOperation(JsonElement operation, string type, ILProcessor proc)
+    // {
+	   //  // x // operation
+	   //  // y // operand
+	   //  // op // operator
+	   //  if (operation.TryGetProperty("X", out JsonElement x) && operation.TryGetProperty("Y", out JsonElement y) && 
+	   //      operation.TryGetProperty("Op", out JsonElement op))
+	   //  {
+		  //   GenerateOperand(y, type, proc);
+		  //   
+		  //   if (operation.TryGetProperty("X", out JsonElement xx) && operation.TryGetProperty("Y", out JsonElement xy) && 
+		  //       operation.TryGetProperty("Op", out JsonElement xop))
+		  //   {
+			 //    GenerateOperand(xy, type, proc);
+			 //    GenerateOperator(op.GetInt32(), proc);
+			 //    
+			 //    GenerateOperation(xx, type, proc);
+			 //    GenerateOperator(xop.GetInt32(), proc);
+			 //    return;
+		  //   }
+		  //   
+		  //   GenerateOperation(x, type, proc);
+		  //   GenerateOperator(op.GetInt32(), proc);
+		  //   return;
+	   //  }
+	   //  
+	   //  GenerateOperand(operation, type, proc);
+    // }
     
-    public void GenerateOperand(JsonElement operand, string type, ILProcessor proc)
-    {
-	    // x // operation
-	    // y // operand
-	    // op // operator
-	    if (operand.TryGetProperty("X", out JsonElement x) && operand.TryGetProperty("Y", out JsonElement y) &&
-	        operand.TryGetProperty("Op", out JsonElement op))
-	    { // if operation
-		    GenerateOperation(operand, type, proc); 
-		    return;
-	    }
-	    
-	    // if single
-
-	    if (type.Equals("Цел64")) // todo change all int32 to int64 (int32, Ldc_I4, etc)
-	    {
-		    proc.Emit(OpCodes.Ldc_I4, operand.GetProperty("IntVal").GetInt32());
-	    }
-	    
-	    // if (type.Equals(_asm.MainModule.TypeSystem.Int32))
-	    // {
-		   //  proc.Emit(OpCodes.Ldc_I4, Int32.Parse(value));
-	    // }
-	    // else if (type.Equals(_asm.MainModule.TypeSystem.Double))
-	    // {
-		   //  proc.Emit(OpCodes.Ldc_R8, Double.Parse(value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo));
-	    // }
-	    // else if (type.Equals(_asm.MainModule.TypeSystem.Boolean))
-	    // {
-		   //  if (value.Equals("true"))
-		   //  {
-			  //   proc.Emit(OpCodes.Ldc_I4, 1);
-		   //  }
-		   //  else if (value.Equals("false"))
-		   //  {
-			  //   proc.Emit(OpCodes.Ldc_I4, 0);
-		   //  }
-	    // }
-	    
-	    // if single variable
-	    
-	    // if (_vars.Keys.Contains(name))
-	    // {
-		   //  proc.Emit(OpCodes.Ldloc, _vars[name]);
-	    // }
-	    // else
-	    // {
-		   //  GenerateLDARG(_paramsDefinitions[name].Item1, proc);
-	    // }
-	    //
-	    // if (type.Equals("Цел64"))
-	    // {
-		   //  proc.Emit(OpCodes.Ldelem_I4);
-	    // }
-	    
-	    // Expression index = operand._single._variable._arrayType._arrayType._expression;
-	    // GenerateExpression(index, proc);
-	    // Type type = _varsTypes[name]._arrayType._type;
-	    // if (type._primitiveType._isInt)
-	    // {
-		   //  proc.Emit(OpCodes.Ldelem_I4);
-	    // }
-	    // else if (type._primitiveType._isBoolean)
-	    // {
-		   //  proc.Emit(OpCodes.Ldelem_U1);
-	    // }
-	    // else if (type._primitiveType._isReal)
-	    // {
-		   //  proc.Emit(OpCodes.Ldelem_R8);
-	    // }
-	    
-	    //// else EmitValue(operand._single._value, proc, GetTypeRef(operand._single._type));
-    }
+    // public void GenerateOperand(JsonElement operand, string type, ILProcessor proc)
+    // {
+	   //  // x // operation
+	   //  // y // operand
+	   //  // op // operator
+	   //  if (operand.TryGetProperty("X", out JsonElement x) && operand.TryGetProperty("Y", out JsonElement y) &&
+	   //      operand.TryGetProperty("Op", out JsonElement op))
+	   //  { // if operation
+		  //   GenerateOperation(operand, type, proc); 
+		  //   return;
+	   //  }
+	   //  
+	   //  // if single
+	   //  var opType = operand.GetProperty("Typ").GetProperty("Name");
+    //
+	   //  if (opType.Equals("Цел64")) // todo change all int32 to int64 (int32, Ldc_I4, etc)
+	   //  {
+		  //   proc.Emit(OpCodes.Ldc_I4, operand.GetProperty("IntVal").GetInt32());
+	   //  }
+	   //  // else if (type.Equals("Лог"))
+	   //  // {
+		  //  //  
+	   //  // }
+	   //  
+	   //  // if (type.Equals(_asm.MainModule.TypeSystem.Int32))
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldc_I4, Int32.Parse(value));
+	   //  // }
+	   //  // else if (type.Equals(_asm.MainModule.TypeSystem.Double))
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldc_R8, Double.Parse(value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo));
+	   //  // }
+	   //  // else if (type.Equals(_asm.MainModule.TypeSystem.Boolean))
+	   //  // {
+		  //  //  if (value.Equals("true"))
+		  //  //  {
+			 //  //   proc.Emit(OpCodes.Ldc_I4, 1);
+		  //  //  }
+		  //  //  else if (value.Equals("false"))
+		  //  //  {
+			 //  //   proc.Emit(OpCodes.Ldc_I4, 0);
+		  //  //  }
+	   //  // }
+	   //  
+	   //  // if single variable
+	   //  
+	   //  // if (_vars.Keys.Contains(name))
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldloc, _vars[name]);
+	   //  // }
+	   //  // else
+	   //  // {
+		  //  //  GenerateLDARG(_paramsDefinitions[name].Item1, proc);
+	   //  // }
+	   //  //
+	   //  // if (type.Equals("Цел64"))
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldelem_I4);
+	   //  // }
+	   //  
+	   //  // Expression index = operand._single._variable._arrayType._arrayType._expression;
+	   //  // GenerateExpression(index, proc);
+	   //  // Type type = _varsTypes[name]._arrayType._type;
+	   //  // if (type._primitiveType._isInt)
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldelem_I4);
+	   //  // }
+	   //  // else if (type._primitiveType._isBoolean)
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldelem_U1);
+	   //  // }
+	   //  // else if (type._primitiveType._isReal)
+	   //  // {
+		  //  //  proc.Emit(OpCodes.Ldelem_R8);
+	   //  // }
+	   //  
+	   //  //// else EmitValue(operand._single._value, proc, GetTypeRef(operand._single._type));
+    // }
     
     public void GenerateLDARG(int i, ILProcessor proc)
     {
@@ -436,16 +445,6 @@ public class Parser
 	    {
 		    proc.Emit(OpCodes.Ldarg, i);
 	    }
-    }
-
-    public void GenerateOperator(int op, ILProcessor proc)
-    {
-	    // if (op._mathematicalOperator != null)
-		   //  GenerateMathOp(op._mathematicalOperator, proc);
-	    // else if (op._comparisonOperator != null)
-		   //  GenerateCompOp(op._comparisonOperator, proc);
-	    // else if(op._logicalOperator != null)
-		   //  GenerateLogicOp(op._logicalOperator, proc);
     }
     
     public TypeReference GetTypeRef(string type)
@@ -581,32 +580,7 @@ public class Parser
     /// <summary>
     /// ------------------------------------------------------------------------------------------------
     /// </summary>
-
-    public void StartParsing()
-    {
-        ParseModule(_ast);
-    }
-
-    private void ParseModule(JsonElement module)
-    {
-        var imports = module.GetProperty("Imports"); // arr
-        for (int i = 0; i < imports.GetArrayLength(); i++)
-        {
-            ParseImport(imports[i]);
-        }
-        
-        var decls = module.GetProperty("Decls"); // arr
-        for (int i = 0; i < decls.GetArrayLength(); i++)
-        {
-            // ParseDecl(decls[i]);
-        }
-        
-        var statements = module.GetProperty("Entry").GetProperty("Seq").GetProperty("Statements"); // arr
-        for (int i = 0; i < statements.GetArrayLength(); i++)
-        {
-            // GenerateStatement(statements[i]);
-        }
-    }
+    
 
     private void ParseImport(JsonElement import)
     {
@@ -617,13 +591,6 @@ public class Parser
     {
         // todo if var decl
         GenerateVarDecl(decl, md, proc); 
-        // string? name = decl.GetProperty("Name").GetString();
-        // string? type = decl.GetProperty("Typ").GetProperty("Name").GetString();
-        // Print(name);
-        // Print(type);
-        //
-        // JsonElement init = decl.GetProperty("Init");
-        // ParseExpr(init);
     }
 
     private void ParseExpr(JsonElement expr)
@@ -662,7 +629,8 @@ public class Parser
 	    string? name = l.GetProperty("Name").GetString();
 	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
 
-	    GenerateOperation(r, type!, proc);
+	    new Expr(r).GenerateExpr(proc);
+	    // GenerateOperation(r, type!, proc);
 	    proc.Emit(OpCodes.Stloc, _vars[name!]);
 
 	    GeneratePrint(_vars[name!], type!, proc);
