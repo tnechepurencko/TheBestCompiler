@@ -13,7 +13,15 @@ public class Expr(JsonElement operation)
 
     private readonly Dictionary<int, List<OpCode>> _operators = new()
     {
-        { 31, new List<OpCode> { OpCodes.Cgt, OpCodes.Ldc_I4_0, OpCodes.Ceq } } // <=
+        { 11, new List<OpCode> { OpCodes.Add} }, // + 11
+        { 12, new List<OpCode> { OpCodes.Sub} }, // - 12
+        { 13, new List<OpCode> { OpCodes.Mul} }, // * 13
+        { 14, new List<OpCode> { OpCodes.Div} }, // / 14
+        { 27, new List<OpCode> { OpCodes.Ceq} }, // = 27
+        { 28, new List<OpCode> { OpCodes.Clt} }, // < 28
+        { 29, new List<OpCode> { OpCodes.Cgt} }, // > 29
+        { 31, new List<OpCode> { OpCodes.Cgt, OpCodes.Ldc_I4_0, OpCodes.Ceq } }, // <= 31
+        { 32, new List<OpCode> { OpCodes.Clt, OpCodes.Ldc_I4_0, OpCodes.Ceq } } // >= 32
     };
 
     private bool IsSingle()
