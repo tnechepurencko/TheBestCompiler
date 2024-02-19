@@ -8,8 +8,8 @@ public class Value
 {
     private static readonly Dictionary<string, OpCode> Types  = new()
     {
-        {"Цел64", OpCodes.Ldc_I4}, // todo this is for int32, need to change
-        {"Строка", OpCodes.Ldstr} // todo this is for int32, need to change
+        {"Цел64", OpCodes.Ldc_I8},
+        {"Строка", OpCodes.Ldstr}
     };
     
     public static void GenerateValue(JsonElement single, ILProcessor proc)
@@ -19,7 +19,7 @@ public class Value
         
         if (type.Equals("Цел64"))
         {
-            var value = single.GetProperty("IntVal").GetInt32(); // todo not int32
+            var value = single.GetProperty("IntVal").GetInt64();
             proc.Emit(Types[type], value);
         } 
         else if (type.Equals("Строка"))

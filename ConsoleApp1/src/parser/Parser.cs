@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.print;
@@ -26,14 +25,10 @@ public class Parser
     private Dictionary<string, MethodDefinition> _funs;
     private Dictionary<string, ILProcessor> _funsProcs;
     // private Dictionary<string, Type> _varsTypes;
-    public static Dictionary<string, VariableDefinition> Vars;
+    public static Dictionary<string, VariableDefinition> Vars = new();
     private Dictionary<string, Tuple<int, ParameterDefinition, Type>> _paramsDefinitions;
 
-    private static readonly Dictionary<string, TypeReference> TypesReferences = new()
-    {
-	    { "Цел64", Asm.MainModule.TypeSystem.Int32 }, // todo change int32
-	    { "Строка", Asm.MainModule.TypeSystem.String }
-    };
+    private static Dictionary<string, TypeReference> TypesReferences;
     
     public Parser(string path)
     {
@@ -46,7 +41,14 @@ public class Parser
 
         // _generator = new Generator();
         var mp = new ModuleParameters { Architecture = TargetArchitecture.AMD64, Kind =  ModuleKind.Console, ReflectionImporterProvider = new SystemPrivateCoreLibFixerReflectionProvider() };
-        Asm = AssemblyDefinition.CreateAssembly(new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0")), Path.GetFileName(_path), mp);
+        var and = new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0"));
+        Asm = AssemblyDefinition.CreateAssembly(and, Path.GetFileName(_path), mp);
+
+        TypesReferences = new()
+        {
+	        { "Цел64", Asm.MainModule.TypeSystem.Int64 },
+	        { "Строка", Asm.MainModule.TypeSystem.String }
+        };
 	    
         _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
         Asm.MainModule.Types.Add(_typeDef);
@@ -69,9 +71,7 @@ public class Parser
     {
 	    _funs = new Dictionary<string, MethodDefinition>();
 	    _funsProcs = new Dictionary<string, ILProcessor>();
-	    Vars = new Dictionary<string, VariableDefinition>();
 	    _paramsDefinitions = new Dictionary<string, Tuple<int, ParameterDefinition, Type>>();
-
     }
     
     public void Gen()
@@ -383,7 +383,7 @@ public class Parser
 	   //  // if single
 	   //  var opType = operand.GetProperty("Typ").GetProperty("Name");
     //
-	   //  if (opType.Equals("Цел64")) // todo change all int32 to int64 (int32, Ldc_I4, etc)
+	   //  if (opType.Equals("Цел64")) // to do change all int32 to int64 (int32, Ldc_I4, etc)
 	   //  {
 		  //   proc.Emit(OpCodes.Ldc_I4, operand.GetProperty("IntVal").GetInt32());
 	   //  }
@@ -623,7 +623,7 @@ public class Parser
     
     // public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
     // {
-	   //  var origType = "System.Int32"; // todo change
+	   //  var origType = "System.Int32"; // to do change
 	   //  
 	   //  proc.Emit(OpCodes.Ldloc, varDef);
 	   //  proc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, origType)));

@@ -8,7 +8,7 @@ public class Out
 {
     private static readonly Dictionary<string, string> Types = new()
     {
-        {"Цел64", "System.Int32"}, // todo this is for int32, need to change
+        {"Цел64", "System.Int64"}, 
         {"Строка", "System.String"}
     };
     
