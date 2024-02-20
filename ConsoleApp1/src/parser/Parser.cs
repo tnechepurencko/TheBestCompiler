@@ -39,7 +39,6 @@ public class Parser
 
         InitDs();
 
-        // _generator = new Generator();
         var mp = new ModuleParameters { Architecture = TargetArchitecture.AMD64, Kind =  ModuleKind.Console, ReflectionImporterProvider = new SystemPrivateCoreLibFixerReflectionProvider() };
         var and = new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0"));
         Asm = AssemblyDefinition.CreateAssembly(and, Path.GetFileName(_path), mp);
@@ -49,6 +48,8 @@ public class Parser
 	        { "Цел64", Asm.MainModule.TypeSystem.Int64 },
 	        { "Строка", Asm.MainModule.TypeSystem.String },
 	        { "Вещ64", Asm.MainModule.TypeSystem.Double },
+	        { "Пусто", Asm.MainModule.ImportReference(typeof(System.Nullable<>)).MakeGenericInstanceType(Asm.MainModule.TypeSystem.Int32) },
+	        { "Лог", Asm.MainModule.TypeSystem.Boolean },
         };
 	    
         _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
@@ -483,9 +484,17 @@ public class Parser
 	    Vars.Add(name!, vd);
 	    
 	    md.Body.Variables.Add(vd);
+
+	    if (type!.Equals("Пусто"))
+	    {
+		    proc.Emit(OpCodes.Initobj, TypesReferences[type]);
+	    }
+	    else
+	    {
+		    new Expr(value).GenerateExpr(proc);
+		    proc.Emit(OpCodes.Stloc, vd);
+	    }
 	    
-	    new Expr(value).GenerateExpr(proc);
-	    proc.Emit(OpCodes.Stloc, vd);
 	    Out.GeneratePrint(vd, type!, proc);
 	    
 	    
@@ -597,29 +606,6 @@ public class Parser
     {
         // todo if var decl
         GenerateVarDecl(decl, md, proc); 
-    }
-
-    private void ParseExpr(JsonElement expr)
-    {
-        string? type = expr.GetProperty("Typ").GetProperty("Name").GetString();
-        
-        // x // operation
-        // y // operand
-        // op // operator
-        if (expr.TryGetProperty("X", out JsonElement x) && expr.TryGetProperty("Y", out JsonElement y) && 
-            expr.TryGetProperty("Op", out JsonElement op))
-        {
-            ParseExpr(x);
-            int opCode = op.GetInt32();
-            ParseExpr(y);
-            return;
-        }
-        
-        if (type!.Equals("Цел64"))
-        {
-            long value = expr.GetProperty("IntVal").GetInt64();
-            // _generator.GenerateInt64(value);
-        }
     }
     
     // public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)

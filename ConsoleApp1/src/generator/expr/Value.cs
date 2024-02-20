@@ -11,7 +11,8 @@ public class Value
     {
         {"Цел64", OpCodes.Ldc_I8}, // types
         {"Строка", OpCodes.Ldstr},
-        {"Вещ64", OpCodes.Ldc_R8}
+        {"Вещ64", OpCodes.Ldc_R8},
+        {"Лог", OpCodes.Ldc_I4}
     };
     
     public static void GenerateValue(JsonElement single, ILProcessor proc)
@@ -32,6 +33,16 @@ public class Value
         else if (type.Equals("Цел64"))
         {
             var value = single.GetProperty("IntVal").GetInt64();
+            proc.Emit(Types[type], value);
+        } 
+        else if (type.Equals("Лог"))
+        {
+            var value = single.GetProperty("IntVal").GetInt64(); // todo imp
+            proc.Emit(Types[type], value);
+        } 
+        else if (type.Equals("Пусто"))
+        {
+            var value = single.GetProperty("IntVal").GetInt64(); // todo imp
             proc.Emit(Types[type], value);
         } 
     }

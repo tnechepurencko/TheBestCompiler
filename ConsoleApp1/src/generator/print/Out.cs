@@ -10,11 +10,17 @@ public class Out
     {
         {"Цел64", "System.Int64"},  // types
         {"Строка", "System.String"},
-        {"Вещ64", "System.Double"}
+        {"Вещ64", "System.Double"},
+        {"Лог", "System.Boolean"},
     };
     
     public static void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
     {
+        if (type.Equals("Пусто"))
+        {
+            return;
+        }
+        
         var origType = Types[type];
 	    
         proc.Emit(OpCodes.Ldloc, varDef);
