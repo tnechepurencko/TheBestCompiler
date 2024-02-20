@@ -50,6 +50,8 @@ public class Parser
 	        { "Вещ64", Asm.MainModule.TypeSystem.Double },
 	        { "Пусто", Asm.MainModule.ImportReference(typeof(System.Nullable<>)).MakeGenericInstanceType(Asm.MainModule.TypeSystem.Int32) },
 	        { "Лог", Asm.MainModule.TypeSystem.Boolean },
+	        { "Слово64", Asm.MainModule.TypeSystem.UInt64 },
+	        { "Байт", Asm.MainModule.TypeSystem.Byte },
         };
 	    
         _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
@@ -607,14 +609,6 @@ public class Parser
         // todo if var decl
         GenerateVarDecl(decl, md, proc); 
     }
-    
-    // public void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
-    // {
-	   //  var origType = "System.Int32"; // to do change
-	   //  
-	   //  proc.Emit(OpCodes.Ldloc, varDef);
-	   //  proc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console), "WriteLine",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, origType)));
-    // }
 
     private void ParseAssignment(JsonElement l, JsonElement r, ILProcessor proc)
     {

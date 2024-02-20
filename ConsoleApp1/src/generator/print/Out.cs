@@ -12,6 +12,8 @@ public class Out
         {"Строка", "System.String"},
         {"Вещ64", "System.Double"},
         {"Лог", "System.Boolean"},
+        {"Байт", "System.Int32"}, // like int
+        {"Слово64", "System.UInt64"},
     };
     
     public static void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
