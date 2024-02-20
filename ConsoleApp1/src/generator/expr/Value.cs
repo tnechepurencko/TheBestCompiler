@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Text.Json;
 using Mono.Cecil.Cil;
 
@@ -8,8 +9,9 @@ public class Value
 {
     private static readonly Dictionary<string, OpCode> Types  = new()
     {
-        {"Цел64", OpCodes.Ldc_I8},
-        {"Строка", OpCodes.Ldstr}
+        {"Цел64", OpCodes.Ldc_I8}, // types
+        {"Строка", OpCodes.Ldstr},
+        {"Вещ64", OpCodes.Ldc_R8}
     };
     
     public static void GenerateValue(JsonElement single, ILProcessor proc)
@@ -17,15 +19,21 @@ public class Value
         var type = single.GetProperty("Typ").GetProperty("Name").GetString();
         Debug.Assert(type != null, nameof(type) + " != null");
         
-        if (type.Equals("Цел64"))
+        
+        if (type.Equals("Строка")) // types
+        {
+            proc.Emit(Types[type], GetString(single));
+        }
+        else if (type.Equals("Вещ64"))
+        {
+            var floatStr = single.GetProperty("FloatStr").GetString();
+            proc.Emit(Types[type], double.Parse(floatStr!, CultureInfo.InvariantCulture));
+        }
+        else if (type.Equals("Цел64"))
         {
             var value = single.GetProperty("IntVal").GetInt64();
             proc.Emit(Types[type], value);
         } 
-        else if (type.Equals("Строка"))
-        {
-            proc.Emit(Types[type], GetString(single));
-        }
     }
 
     private static string GetString(JsonElement single)

@@ -44,10 +44,11 @@ public class Parser
         var and = new AssemblyNameDefinition("Program", Version.Parse("1.0.0.0"));
         Asm = AssemblyDefinition.CreateAssembly(and, Path.GetFileName(_path), mp);
 
-        TypesReferences = new()
+        TypesReferences = new() // types
         {
 	        { "Цел64", Asm.MainModule.TypeSystem.Int64 },
-	        { "Строка", Asm.MainModule.TypeSystem.String }
+	        { "Строка", Asm.MainModule.TypeSystem.String },
+	        { "Вещ64", Asm.MainModule.TypeSystem.Double },
         };
 	    
         _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);

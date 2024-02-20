@@ -8,8 +8,9 @@ public class Out
 {
     private static readonly Dictionary<string, string> Types = new()
     {
-        {"Цел64", "System.Int64"}, 
-        {"Строка", "System.String"}
+        {"Цел64", "System.Int64"},  // types
+        {"Строка", "System.String"},
+        {"Вещ64", "System.Double"}
     };
     
     public static void GeneratePrint(VariableDefinition varDef, string type, ILProcessor proc)
