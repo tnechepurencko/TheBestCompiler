@@ -12,7 +12,7 @@
           "Pos": 3145729,
           "D": {
             "Pos": 2359297,
-            "Name": "h",
+            "Name": "а",
             "Typ": {
               "Pos": 0,
               "Name": "Цел64"
@@ -27,7 +27,7 @@
               },
               "ReadOnly": true,
               "Kind": 0,
-              "IntVal": 7,
+              "IntVal": 5,
               "WordVal": 0,
               "FloatStr": "",
               "StrVal": null
@@ -38,25 +38,90 @@
           }
         },
         {
-          "Pos": 3145729,
+          "Pos": 4390913,
+          "D": {
+            "Pos": 3538945,
+            "Name": "б",
+            "Typ": {
+              "Pos": 0,
+              "Name": "Цел64"
+            },
+            "Host": null,
+            "Exported": false,
+            "Init": {
+              "Pos": 3866625,
+              "Typ": {
+                "Pos": 0,
+                "Name": "Цел64"
+              },
+              "ReadOnly": true,
+              "Kind": 0,
+              "IntVal": 10,
+              "WordVal": 0,
+              "FloatStr": "",
+              "StrVal": null
+            },
+            "Later": false,
+            "AssignOnce": false,
+            "OutParam": false
+          }
+        },
+        {
+          "Pos": 4390913,
           "Cond": {
-            "Pos": 3604481,
+            "Pos": 4849665,
             "Typ": {
               "Pos": 0,
               "Name": "Лог"
             },
             "ReadOnly": false,
             "X": {
-              "Pos": 3473409,
+              "Pos": 4718593,
               "Typ": {
                 "Pos": 0,
                 "Name": "Цел64"
               },
               "ReadOnly": false,
-              "Name": "h",
+              "Name": "б",
+              "Obj": {
+                "Pos": 3538945,
+                "Name": "б",
+                "Typ": {
+                  "Pos": 0,
+                  "Name": "Цел64"
+                },
+                "Host": null,
+                "Exported": false,
+                "Init": {
+                  "Pos": 3866625,
+                  "Typ": {
+                    "Pos": 0,
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true,
+                  "Kind": 0,
+                  "IntVal": 10,
+                  "WordVal": 0,
+                  "FloatStr": "",
+                  "StrVal": null
+                },
+                "Later": false,
+                "AssignOnce": false,
+                "OutParam": false
+              }
+            },
+            "Op": 29,
+            "Y": {
+              "Pos": 4980737,
+              "Typ": {
+                "Pos": 0,
+                "Name": "Цел64"
+              },
+              "ReadOnly": false,
+              "Name": "а",
               "Obj": {
                 "Pos": 2359297,
-                "Name": "h",
+                "Name": "а",
                 "Typ": {
                   "Pos": 0,
                   "Name": "Цел64"
@@ -71,7 +136,7 @@
                   },
                   "ReadOnly": true,
                   "Kind": 0,
-                  "IntVal": 7,
+                  "IntVal": 5,
                   "WordVal": 0,
                   "FloatStr": "",
                   "StrVal": null
@@ -80,38 +145,59 @@
                 "AssignOnce": false,
                 "OutParam": false
               }
-            },
-            "Op": 31,
-            "Y": {
-              "Pos": 3801089,
-              "Typ": {
-                "Pos": 0,
-                "Name": "Цел64"
-              },
-              "ReadOnly": true,
-              "Kind": 0,
-              "IntVal": 1,
-              "WordVal": 0,
-              "FloatStr": "",
-              "StrVal": null
             }
           },
           "Then": {
-            "Pos": 4521985,
+            "Pos": 5832705,
             "Statements": [
               {
-                "Pos": 4653057,
+                "Pos": 5963777,
                 "L": {
-                  "Pos": 4521985,
+                  "Pos": 5832705,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
                   },
                   "ReadOnly": false,
-                  "Name": "h",
+                  "Name": "б",
+                  "Obj": {
+                    "Pos": 3538945,
+                    "Name": "б",
+                    "Typ": {
+                      "Pos": 0,
+                      "Name": "Цел64"
+                    },
+                    "Host": null,
+                    "Exported": false,
+                    "Init": {
+                      "Pos": 3866625,
+                      "Typ": {
+                        "Pos": 0,
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true,
+                      "Kind": 0,
+                      "IntVal": 10,
+                      "WordVal": 0,
+                      "FloatStr": "",
+                      "StrVal": null
+                    },
+                    "Later": false,
+                    "AssignOnce": false,
+                    "OutParam": false
+                  }
+                },
+                "R": {
+                  "Pos": 6160385,
+                  "Typ": {
+                    "Pos": 0,
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": false,
+                  "Name": "а",
                   "Obj": {
                     "Pos": 2359297,
-                    "Name": "h",
+                    "Name": "а",
                     "Typ": {
                       "Pos": 0,
                       "Name": "Цел64"
@@ -126,7 +212,7 @@
                       },
                       "ReadOnly": true,
                       "Kind": 0,
-                      "IntVal": 7,
+                      "IntVal": 5,
                       "WordVal": 0,
                       "FloatStr": "",
                       "StrVal": null
@@ -135,40 +221,27 @@
                     "AssignOnce": false,
                     "OutParam": false
                   }
-                },
-                "R": {
-                  "Pos": 4849665,
-                  "Typ": {
-                    "Pos": 0,
-                    "Name": "Цел64"
-                  },
-                  "ReadOnly": true,
-                  "Kind": 0,
-                  "IntVal": 555,
-                  "WordVal": 0,
-                  "FloatStr": "",
-                  "StrVal": null
                 }
               }
             ],
             "Inner": null
           },
           "Else": {
-            "Pos": 6553601,
+            "Pos": 7864321,
             "Statements": [
               {
-                "Pos": 6684673,
+                "Pos": 7995393,
                 "L": {
-                  "Pos": 6553601,
+                  "Pos": 7864321,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
                   },
                   "ReadOnly": false,
-                  "Name": "h",
+                  "Name": "б",
                   "Obj": {
-                    "Pos": 2359297,
-                    "Name": "h",
+                    "Pos": 3538945,
+                    "Name": "б",
                     "Typ": {
                       "Pos": 0,
                       "Name": "Цел64"
@@ -176,14 +249,14 @@
                     "Host": null,
                     "Exported": false,
                     "Init": {
-                      "Pos": 2686977,
+                      "Pos": 3866625,
                       "Typ": {
                         "Pos": 0,
                         "Name": "Цел64"
                       },
                       "ReadOnly": true,
                       "Kind": 0,
-                      "IntVal": 7,
+                      "IntVal": 10,
                       "WordVal": 0,
                       "FloatStr": "",
                       "StrVal": null
@@ -194,17 +267,83 @@
                   }
                 },
                 "R": {
-                  "Pos": 6881281,
+                  "Pos": 8323073,
                   "Typ": {
                     "Pos": 0,
                     "Name": "Цел64"
                   },
-                  "ReadOnly": true,
-                  "Kind": 0,
-                  "IntVal": 333,
-                  "WordVal": 0,
-                  "FloatStr": "",
-                  "StrVal": null
+                  "ReadOnly": false,
+                  "X": {
+                    "Pos": 8192001,
+                    "Typ": {
+                      "Pos": 0,
+                      "Name": "Цел64"
+                    },
+                    "ReadOnly": false,
+                    "Name": "а",
+                    "Obj": {
+                      "Pos": 2359297,
+                      "Name": "а",
+                      "Typ": {
+                        "Pos": 0,
+                        "Name": "Цел64"
+                      },
+                      "Host": null,
+                      "Exported": false,
+                      "Init": {
+                        "Pos": 2686977,
+                        "Typ": {
+                          "Pos": 0,
+                          "Name": "Цел64"
+                        },
+                        "ReadOnly": true,
+                        "Kind": 0,
+                        "IntVal": 5,
+                        "WordVal": 0,
+                        "FloatStr": "",
+                        "StrVal": null
+                      },
+                      "Later": false,
+                      "AssignOnce": false,
+                      "OutParam": false
+                    }
+                  },
+                  "Op": 11,
+                  "Y": {
+                    "Pos": 8454145,
+                    "Typ": {
+                      "Pos": 0,
+                      "Name": "Цел64"
+                    },
+                    "ReadOnly": false,
+                    "Name": "б",
+                    "Obj": {
+                      "Pos": 3538945,
+                      "Name": "б",
+                      "Typ": {
+                        "Pos": 0,
+                        "Name": "Цел64"
+                      },
+                      "Host": null,
+                      "Exported": false,
+                      "Init": {
+                        "Pos": 3866625,
+                        "Typ": {
+                          "Pos": 0,
+                          "Name": "Цел64"
+                        },
+                        "ReadOnly": true,
+                        "Kind": 0,
+                        "IntVal": 10,
+                        "WordVal": 0,
+                        "FloatStr": "",
+                        "StrVal": null
+                      },
+                      "Later": false,
+                      "AssignOnce": false,
+                      "OutParam": false
+                    }
+                  }
                 }
               }
             ],
@@ -400,9 +539,9 @@
           "Names": {}
         },
         "Names": {
-          "h": {
+          "а": {
             "Pos": 2359297,
-            "Name": "h",
+            "Name": "а",
             "Typ": {
               "Pos": 0,
               "Name": "Цел64"
@@ -417,7 +556,33 @@
               },
               "ReadOnly": true,
               "Kind": 0,
-              "IntVal": 7,
+              "IntVal": 5,
+              "WordVal": 0,
+              "FloatStr": "",
+              "StrVal": null
+            },
+            "Later": false,
+            "AssignOnce": false,
+            "OutParam": false
+          },
+          "б": {
+            "Pos": 3538945,
+            "Name": "б",
+            "Typ": {
+              "Pos": 0,
+              "Name": "Цел64"
+            },
+            "Host": null,
+            "Exported": false,
+            "Init": {
+              "Pos": 3866625,
+              "Typ": {
+                "Pos": 0,
+                "Name": "Цел64"
+              },
+              "ReadOnly": true,
+              "Kind": 0,
+              "IntVal": 10,
               "WordVal": 0,
               "FloatStr": "",
               "StrVal": null

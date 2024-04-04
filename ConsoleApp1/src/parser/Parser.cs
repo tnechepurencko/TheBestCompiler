@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.print;
@@ -9,7 +10,7 @@ using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 
-public class Parser
+public class Parser	
 {
     private readonly JsonElement _ast;
     
@@ -143,6 +144,18 @@ public class Parser
             return;
         }
         
+        if (stmt.TryGetProperty("LInc", out JsonElement lInc))
+        {
+	        ParseLIncDec(lInc, proc, true);
+	        return;
+        }
+        
+        if (stmt.TryGetProperty("LDec", out JsonElement lDec))
+        {
+	        ParseLIncDec(lDec, proc, false);
+	        return;
+        }
+        
         if (stmt.TryGetProperty("L", out JsonElement lAssig) && stmt.TryGetProperty("R", out JsonElement rAssig))
         {
             ParseAssignment(lAssig, rAssig, proc);
@@ -178,6 +191,30 @@ public class Parser
         }
         
         Print("no");
+    }
+
+    public void ParseLIncDec(JsonElement x, ILProcessor proc, bool isInc)
+    {
+	    var exprBase = x.GetProperty("ExprBase");
+	    var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
+	    Debug.Assert(type != null, nameof(type) + " != null");
+	    
+	    var name = exprBase.GetProperty("Name").GetString();
+	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
+	    proc.Emit(OpCodes.Dup);
+	    proc.Emit(OpCodes.Ldc_I4_1);
+	    
+	    if (isInc)
+	    {
+		    proc.Emit(OpCodes.Add);
+	    }
+	    else
+	    {
+		    proc.Emit(OpCodes.Sub);
+	    }
+	    
+	    proc.Emit(OpCodes.Stloc, Vars[name!]);
+	    proc.Emit(OpCodes.Pop);
     }
 
     public void ParseException(JsonElement x, ILProcessor proc)
@@ -477,8 +514,9 @@ public class Parser
 
     public void GenerateVarDecl(JsonElement decl, MethodDefinition md, ILProcessor proc)
     {  
-	    string? name = decl.GetProperty("Name").GetString();
-	    string? type = decl.GetProperty("Typ").GetProperty("Name").GetString();
+	    JsonElement descBase = decl.GetProperty("DeclBase");
+	    string? name = descBase.GetProperty("Name").GetString();
+	    string? type = descBase.GetProperty("Typ").GetProperty("Name").GetString();
 	    
 	    JsonElement value = decl.GetProperty("Init");
 	    

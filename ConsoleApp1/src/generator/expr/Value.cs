@@ -19,9 +19,9 @@ public class Value
     
     public static void GenerateValue(JsonElement single, ILProcessor proc)
     {
-        var type = single.GetProperty("Typ").GetProperty("Name").GetString();
+        JsonElement exprBase = single.GetProperty("ExprBase");
+        var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
         Debug.Assert(type != null, nameof(type) + " != null");
-        
         
         if (type.Equals("Строка")) // types
         {
