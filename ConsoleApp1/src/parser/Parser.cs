@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
+using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.print;
 
 namespace ConsoleApp1.parser;
@@ -15,7 +16,7 @@ public class Parser
     private readonly JsonElement _ast;
     
     public static AssemblyDefinition Asm;
-    private TypeDefinition _typeDef;
+    public TypeDefinition MainClassTypeDef;
     private MethodDefinition _mainModule;
     private ILProcessor _mainProc;
     
@@ -23,13 +24,13 @@ public class Parser
     
     private MethodDefinition _mainRoutineModule;
     
-    private Dictionary<string, MethodDefinition> _funs;
-    private Dictionary<string, ILProcessor> _funsProcs;
+    // private Dictionary<string, MethodDefinition> _funs;
+    // private Dictionary<string, ILProcessor> _funsProcs;
     // private Dictionary<string, Type> _varsTypes;
     public static Dictionary<string, VariableDefinition> Vars = new();
     private Dictionary<string, Tuple<int, ParameterDefinition, Type>> _paramsDefinitions;
 
-    private static Dictionary<string, TypeReference> TypesReferences;
+    public static Dictionary<string, TypeReference> TypesReferences;
     
     public Parser(string path)
     {
@@ -55,14 +56,16 @@ public class Parser
 	        { "Байт", Asm.MainModule.TypeSystem.Byte },
         };
 	    
-        _typeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
-        Asm.MainModule.Types.Add(_typeDef);
+        MainClassTypeDef = new TypeDefinition("", "Program", TypeAttributes.AnsiClass | TypeAttributes.BeforeFieldInit | TypeAttributes.Public, Asm.MainModule.TypeSystem.Object);
+        Asm.MainModule.Types.Add(MainClassTypeDef);
+
+        GenerateGlobalFunctions(MainClassTypeDef, _ast);
         
         _mainRoutineModule = new MethodDefinition("mainRoutineModule", MethodAttributes.Assembly | MethodAttributes.Static | MethodAttributes.HideBySig, Asm.MainModule.TypeSystem.Void);
         GenerateMainModule(_mainRoutineModule, _ast);
         
         _mainModule = new MethodDefinition("Main", MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig, Asm.MainModule.TypeSystem.Void);
-        _typeDef.Methods.Add(_mainModule);
+        MainClassTypeDef.Methods.Add(_mainModule);
         _mainModule.Body.InitLocals = true;
         _mainProc = _mainModule.Body.GetILProcessor();
 	    
@@ -74,8 +77,8 @@ public class Parser
 
     private void InitDs()
     {
-	    _funs = new Dictionary<string, MethodDefinition>();
-	    _funsProcs = new Dictionary<string, ILProcessor>();
+	    // _funs = new Dictionary<string, MethodDefinition>();
+	    // _funsProcs = new Dictionary<string, ILProcessor>();
 	    _paramsDefinitions = new Dictionary<string, Tuple<int, ParameterDefinition, Type>>();
     }
     
@@ -96,10 +99,10 @@ public class Parser
 	    _mainProc.Emit(OpCodes.Ret);
 
 	    var ctorMethod = new MethodDefinition(".ctor", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.RTSpecialName | MethodAttributes.SpecialName, Asm.MainModule.TypeSystem.Void);
-	    _typeDef.Methods.Add(ctorMethod);
+	    MainClassTypeDef.Methods.Add(ctorMethod);
 	    var ctorProc = ctorMethod.Body.GetILProcessor();
 	    ctorProc.Emit(OpCodes.Ldarg_0);
-	    ctorProc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.DefaultCtorFor(_typeDef.BaseType)));
+	    ctorProc.Emit(OpCodes.Call, Asm.MainModule.ImportReference(TypeHelpers.DefaultCtorFor(MainClassTypeDef.BaseType)));
 	    ctorProc.Emit(OpCodes.Ret);
 	    Asm.EntryPoint = _mainModule;
       
@@ -114,18 +117,56 @@ public class Parser
     {
         string name = "main";
         
-        _typeDef.Methods.Add(md);
+        MainClassTypeDef.Methods.Add(md);
         md.Body.InitLocals = true;
         var proc = md.Body.GetILProcessor();
         
-        _funs.Add(name, md);
-        _funsProcs.Add(name, proc);
+        // _funs.Add(name, md);
+        // _funsProcs.Add(name, proc);
         
         var statements = module.GetProperty("Entry").GetProperty("Seq").GetProperty("Statements"); // arr
         GenerateStatements(statements, md, proc);
 
         proc.Emit(OpCodes.Ret);
     }
+
+    public void GenerateGlobalFunctions(TypeDefinition mainClass, JsonElement module)
+    {
+	    JsonElement functions = module.GetProperty("Decl"); // arr todo: here are not only functions (also global vars and etc)
+	    for (int i = 0; i < functions.GetArrayLength(); i++)
+	    {
+		    Function function = new Function(functions[i], this);
+		    function.GenerateFunction();
+		    // GenerateFunction(functions[i], mainClass);
+	    }
+    }
+    
+    // todo here is void only
+    // public void GenerateFunction(JsonElement fun, TypeDefinition mainClass)
+    // {
+	   //  string? name = fun.GetProperty("DeclBase").GetProperty("Name").GetString();
+	   //  
+	   //  // generate fun decl
+	   //  var funMd = new MethodDefinition(name, MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.HideBySig, Asm.MainModule.TypeSystem.Void);
+	   //  mainClass.Methods.Add(funMd);
+	   //  funMd.Body.InitLocals = true;
+	   //  var funProc = funMd.Body.GetILProcessor();
+	   //  
+	   //  _funs.Add(name!, funMd);
+	   //  
+	   //  JsonElement p = fun.GetProperty("DeclBase").GetProperty("Typ").GetProperty("Params"); // [] or null
+	   //  Parameters parameters = new Parameters(p);
+	   //  parameters.GenerateParameters(); // todo
+	   //  
+	   //  JsonElement returnType = fun.GetProperty("DeclBase").GetProperty("Typ").GetProperty("ReturnTyp"); // Obj or null
+	   //  // todo generate returnType
+	   //  
+	   //  JsonElement statements = fun.GetProperty("Seq").GetProperty("Statements");
+	   //  // generate stmts
+	   //  GenerateStatements(statements, funMd, funProc);
+	   //  
+	   //  funProc.Emit(OpCodes.Ret);
+    // }
 
     public void GenerateStatements(JsonElement statements, MethodDefinition md, ILProcessor proc)
     {
@@ -182,6 +223,18 @@ public class Parser
 	        return;
         }
         
+        if (stmt.TryGetProperty("X", out JsonElement xReturn) && stmt.TryGetProperty("ReturnTyp", out _))
+        {
+	        ParseReturn(xReturn, proc);
+	        return;
+        }
+        
+        if (stmt.TryGetProperty("X", out JsonElement xCall) && xCall.TryGetProperty("Call", out JsonElement call)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
+        {
+	        ParseFunCall(call, proc);
+	        return;
+        }
+        
         // ADD ANYTHING WITH "X" HERE
         
         if (stmt.TryGetProperty("X", out JsonElement ex)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
@@ -193,13 +246,25 @@ public class Parser
         Print("no");
     }
 
+    public void ParseReturn(JsonElement xReturn, ILProcessor proc)
+    {
+	    new Expr(xReturn).GenerateExpr(proc);
+    }
+
+    public void ParseFunCall(JsonElement call, ILProcessor proc)
+    {
+	    string? name = call.GetProperty("Name").GetString();
+	    proc.Emit(OpCodes.Call, Function.Funs[name!]);
+	    proc.Emit(OpCodes.Pop); // todo pop only if not void and not assignment
+    }
+
     public void ParseLIncDec(JsonElement x, ILProcessor proc, bool isInc)
     {
 	    var exprBase = x.GetProperty("ExprBase");
 	    var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
 	    Debug.Assert(type != null, nameof(type) + " != null");
 	    
-	    var name = exprBase.GetProperty("Name").GetString();
+	    var name = x.GetProperty("Name").GetString();
 	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
 	    proc.Emit(OpCodes.Dup);
 	    proc.Emit(OpCodes.Ldc_I4_1);
@@ -215,6 +280,8 @@ public class Parser
 	    
 	    proc.Emit(OpCodes.Stloc, Vars[name!]);
 	    proc.Emit(OpCodes.Pop);
+	    
+	    Out.GeneratePrint(Vars[name!], type!, proc);
     }
 
     public void ParseException(JsonElement x, ILProcessor proc)
@@ -516,8 +583,15 @@ public class Parser
     {  
 	    JsonElement descBase = decl.GetProperty("DeclBase");
 	    string? name = descBase.GetProperty("Name").GetString();
-	    string? type = descBase.GetProperty("Typ").GetProperty("Name").GetString();
+	    JsonElement typeName;
 	    
+	    bool isFun = descBase.GetProperty("Typ").TryGetProperty("TypeName", out typeName);
+	    if (!isFun)
+	    {
+		    typeName = descBase.GetProperty("Typ").GetProperty("Name");
+	    }
+	    
+	    string? type = typeName.GetString();
 	    JsonElement value = decl.GetProperty("Init");
 	    
 	    var vd = new VariableDefinition(TypesReferences[type!]);
@@ -528,6 +602,12 @@ public class Parser
 	    if (type!.Equals("Пусто"))
 	    {
 		    proc.Emit(OpCodes.Initobj, TypesReferences[type]);
+	    }
+	    else if (isFun)
+	    {
+		    string? funName = value.GetProperty("Call").GetProperty("Name").GetString();
+		    proc.Emit(OpCodes.Call, Function.Funs[funName!]);
+		    proc.Emit(OpCodes.Stloc, vd);
 	    }
 	    else
 	    {
