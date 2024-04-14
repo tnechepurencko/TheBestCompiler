@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.functions;
@@ -38,9 +37,9 @@ public class Statement(JsonElement stmt)
 	        return;
         }
         
-        if (stmt.TryGetProperty("L", out JsonElement lAssig) && stmt.TryGetProperty("R", out JsonElement rAssig))
+        if (Assignment.IsAssig(stmt))
         {
-            ParseAssignment(lAssig, rAssig, proc);
+            Assignment.GetAssig(stmt, proc).Parse();
             return;
         }
         
@@ -90,17 +89,6 @@ public class Statement(JsonElement stmt)
     public void ParseReturn(JsonElement xReturn, ILProcessor proc)
     {
 	    new Expr(xReturn).GenerateExpr(proc);
-    }
-
-    private void ParseAssignment(JsonElement l, JsonElement r, ILProcessor proc)
-    {
-	    string? name = l.GetProperty("Name").GetString();
-	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
-
-	    new Expr(r).GenerateExpr(proc);
-	    proc.Emit(OpCodes.Stloc, Vars[name!]);
-
-	    Out.GeneratePrint(Vars[name!], type!, proc);
     }
 
     public void ParseFunCall(JsonElement call, ILProcessor proc)
