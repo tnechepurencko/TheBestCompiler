@@ -4,6 +4,7 @@ using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.print;
+using ConsoleApp1.generator.statements;
 
 namespace ConsoleApp1.parser;
 
@@ -27,7 +28,6 @@ public class Parser
     // private Dictionary<string, MethodDefinition> _funs;
     // private Dictionary<string, ILProcessor> _funsProcs;
     // private Dictionary<string, Type> _varsTypes;
-    public static Dictionary<string, VariableDefinition> Vars = new();
     private Dictionary<string, Tuple<int, ParameterDefinition, Type>> _paramsDefinitions;
 
     public static Dictionary<string, TypeReference> TypesReferences;
@@ -125,7 +125,7 @@ public class Parser
         // _funsProcs.Add(name, proc);
         
         var statements = module.GetProperty("Entry").GetProperty("Seq").GetProperty("Statements"); // arr
-        GenerateStatements(statements, md, proc);
+        Statement.GenerateStatements(statements, md, proc);
 
         proc.Emit(OpCodes.Ret);
     }
@@ -168,266 +168,10 @@ public class Parser
 	   //  funProc.Emit(OpCodes.Ret);
     // }
 
-    public void GenerateStatements(JsonElement statements, MethodDefinition md, ILProcessor proc)
-    {
-	    for (int i = 0; i < statements.GetArrayLength(); i++)
-	    {
-		    GenerateStatement(statements[i], null, proc, md);
-	    }
-    }
+    
     
     /// GenerateBody
-    public void GenerateStatement(JsonElement stmt, TypeReference? returnType, ILProcessor proc, MethodDefinition md)
-    {
-        if (stmt.TryGetProperty("D", out JsonElement decl))
-        {
-            ParseDecl(decl, md, proc);
-            return;
-        }
-        
-        if (stmt.TryGetProperty("LInc", out JsonElement lInc))
-        {
-	        ParseLIncDec(lInc, proc, true);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("LDec", out JsonElement lDec))
-        {
-	        ParseLIncDec(lDec, proc, false);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("L", out JsonElement lAssig) && stmt.TryGetProperty("R", out JsonElement rAssig))
-        {
-            ParseAssignment(lAssig, rAssig, proc);
-            return;
-        }
-        
-        if (stmt.TryGetProperty("Cond", out JsonElement cond) && stmt.TryGetProperty("Then", out JsonElement then) && 
-            stmt.TryGetProperty("Else", out JsonElement els))
-        {
-	        ParseIfElse(cond, then, els, md, proc);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("Cond", out JsonElement wCond) && stmt.TryGetProperty("Seq", out JsonElement seq))
-        {
-	        ParseWhile(wCond, seq, md, proc);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("X", out JsonElement x) && stmt.TryGetProperty("Cases", out JsonElement cases) && 
-            stmt.TryGetProperty("Else", out JsonElement sEls))
-        {
-	        ParseSwitch(x, cases, sEls, md, proc);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("X", out JsonElement xReturn) && stmt.TryGetProperty("ReturnTyp", out _))
-        {
-	        ParseReturn(xReturn, proc);
-	        return;
-        }
-        
-        if (stmt.TryGetProperty("X", out JsonElement xCall) && xCall.TryGetProperty("Call", out JsonElement call)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
-        {
-	        ParseFunCall(call, proc);
-	        return;
-        }
-        
-        // ADD ANYTHING WITH "X" HERE
-        
-        if (stmt.TryGetProperty("X", out JsonElement ex)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
-        {
-	        ParseException(ex, proc);
-	        return;
-        }
-        
-        Print("no");
-    }
-
-    public void ParseReturn(JsonElement xReturn, ILProcessor proc)
-    {
-	    new Expr(xReturn).GenerateExpr(proc);
-    }
-
-    public void ParseFunCall(JsonElement call, ILProcessor proc)
-    {
-	    string? name = call.GetProperty("Name").GetString();
-	    proc.Emit(OpCodes.Call, Function.Funs[name!]);
-	    proc.Emit(OpCodes.Pop); // todo pop only if not void and not assignment
-    }
-
-    public void ParseLIncDec(JsonElement x, ILProcessor proc, bool isInc)
-    {
-	    var exprBase = x.GetProperty("ExprBase");
-	    var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
-	    Debug.Assert(type != null, nameof(type) + " != null");
-	    
-	    var name = x.GetProperty("Name").GetString();
-	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
-	    proc.Emit(OpCodes.Dup);
-	    proc.Emit(OpCodes.Ldc_I4_1);
-	    
-	    if (isInc)
-	    {
-		    proc.Emit(OpCodes.Add);
-	    }
-	    else
-	    {
-		    proc.Emit(OpCodes.Sub);
-	    }
-	    
-	    proc.Emit(OpCodes.Stloc, Vars[name!]);
-	    proc.Emit(OpCodes.Pop);
-	    
-	    Out.GeneratePrint(Vars[name!], type!, proc);
-    }
-
-    public void ParseException(JsonElement x, ILProcessor proc)
-    {
-	    Value.GenerateValue(x, proc);
-	    proc.Emit(OpCodes.Newobj, Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(
-		    typeof(System.Exception), 
-		    ".ctor",
-		    System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public,
-		    "System.String")));
-	    
-	    proc.Emit(OpCodes.Throw);
-    }
-
-    public void ParseSwitch(JsonElement x, JsonElement cases, JsonElement els, MethodDefinition md, ILProcessor proc)
-    {
-	    // todo if a.	выбор по выражению (§6.8.1)
-	    GenerateExpSwitch(x, cases, els, md, proc);
-
-	    // todo if b.	выбор по предикатам (§6.8.2) 
-	    // todo if c.	выбор по типу (§6.8.3)
-    }
-
-    public void GenerateExpSwitch(JsonElement x, JsonElement cases, JsonElement els, MethodDefinition md,
-	    ILProcessor proc)
-    {
-	    var name = x.GetProperty("Name").GetString();
-	    var type = x.GetProperty("Typ").GetProperty("Name").GetString();
-	    
-	    var switchCondition = new VariableDefinition(TypesReferences[type!]);
-	    md.Body.Variables.Add(switchCondition);
-	    proc.Emit(OpCodes.Ldloc, Vars[name!]);
-	    proc.Emit(OpCodes.Stloc, switchCondition);
-	    
-	    var endOfSwitch = proc.Create(OpCodes.Nop);
-	    var defaultCase = proc.Create(OpCodes.Nop);
-	    
-	    // generate instructions
-	    Instruction?[] instructions = new Instruction?[cases.GetArrayLength()];
-	    for (int i = 0; i < cases.GetArrayLength(); i++)
-	    {
-		    instructions[i] = proc.Create(OpCodes.Nop);
-	    }
-	    
-	    // generate conditions
-	    for (int i = 0; i < cases.GetArrayLength(); i++)
-	    {
-		    var conds = cases[i].GetProperty("Exprs"); // arr
-		    JsonElement cond = conds[0]; // todo check why 0 (can there be more?)
-		    
-		    proc.Emit(OpCodes.Ldloc, switchCondition);
-		    new Expr(cond).GenerateExpr(proc);
-		    proc.Emit(OpCodes.Beq_S, instructions[i]);
-	    }
-	    
-	    proc.Emit(OpCodes.Br, defaultCase);
-	    
-	    // generate sequence
-	    for (int i = 0; i < cases.GetArrayLength(); i++)
-	    {
-		    proc.Append(instructions[i]);
-		    var statements = cases[i].GetProperty("Seq").GetProperty("Statements");
-		    GenerateStatements(statements, md, proc);
-		    proc.Emit(OpCodes.Br, endOfSwitch);
-	    }
-	    
-	    // generate default block
-	    proc.Append(defaultCase);
-	    var elseStatements = els.GetProperty("Statements");
-	    GenerateStatements(elseStatements, md, proc);
-	    proc.Emit(OpCodes.Br, endOfSwitch);
-	    proc.Append(endOfSwitch);
-    }
-
-    public void ParseWhile(JsonElement cond, JsonElement seq, MethodDefinition md, ILProcessor proc)
-    {
-	    var condDef = new VariableDefinition(Asm.MainModule.TypeSystem.Boolean);
-	    md.Body.Variables.Add(condDef);
-	    GenerateCondition(cond, proc, condDef);
-	    
-	    // int i = 0;
-	    var var_i = new VariableDefinition(Asm.MainModule.TypeSystem.Int32);
-	    md.Body.Variables.Add(var_i);
-	    proc.Emit(OpCodes.Ldc_I4, 0);
-	    proc.Emit(OpCodes.Stloc, var_i);
-
-	    var lblFel = proc.Create(OpCodes.Nop);
-	    var nop = proc.Create(OpCodes.Nop);
-	    proc.Append(nop);
-	    
-	    proc.Emit(OpCodes.Ldloc, condDef); // while condDef is not false
-	    proc.Emit(OpCodes.Brfalse, lblFel);
-	    
-	    var statements = seq.GetProperty("Statements"); // arr
-	    for (int i = 0; i < statements.GetArrayLength(); i++)
-	    {
-		    GenerateCondition(cond, proc, condDef);
-		    GenerateStatement(statements[i], null, proc, md);
-	    }
-	    
-	    proc.Emit(OpCodes.Ldloc, var_i);
-	    proc.Emit(OpCodes.Dup);
-	    proc.Emit(OpCodes.Ldc_I4_1);
-	    proc.Emit(OpCodes.Add);
-	    proc.Emit(OpCodes.Stloc, var_i);
-	    proc.Emit(OpCodes.Pop);
-	    proc.Emit(OpCodes.Br, nop);
-	    proc.Append(lblFel);
-    }
     
-    public void GenerateCondition(JsonElement cond, ILProcessor proc, VariableDefinition condDef)
-    {
-	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
-	    if (type != null) new Expr(cond).GenerateExpr(proc);
-	    proc.Emit(OpCodes.Stloc, condDef);
-    }
-
-    // todo check whether elif exists
-    public void ParseIfElse(JsonElement cond, JsonElement then, JsonElement? els, MethodDefinition md, ILProcessor proc)
-    {
-	    new Expr(cond).GenerateExpr(proc);
-		
-	    var elseEntryPoint = proc.Create(OpCodes.Nop); 
-	    proc.Emit(OpCodes.Brfalse, elseEntryPoint);
-	    
-	    var ifStatements = then.GetProperty("Statements"); // arr
-	    GenerateStatements(ifStatements, md, proc);
-	    
-	    var elseEnd = proc.Create(OpCodes.Nop);
-
-	    if (els.HasValue)
-	    {
-		    var endOfIf = proc.Create(OpCodes.Br, elseEnd);
-		    proc.Append(endOfIf);
-		    proc.Append(elseEntryPoint);
-		    // else
-		    var elsStatements = els.Value.GetProperty("Statements"); // arr
-		    GenerateStatements(elsStatements, md, proc);
-	    }
-	    else
-	    {
-		    proc.Append(elseEntryPoint);
-	    }
-	    proc.Append(elseEnd);
-	    md.Body.OptimizeMacros();
-    }
 
     // public void ParseValue(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
     // {
@@ -579,136 +323,7 @@ public class Parser
 	    }
     }
 
-    public void GenerateVarDecl(JsonElement decl, MethodDefinition md, ILProcessor proc)
-    {  
-	    JsonElement descBase = decl.GetProperty("DeclBase");
-	    string? name = descBase.GetProperty("Name").GetString();
-	    JsonElement typeName;
-	    
-	    bool isFun = descBase.GetProperty("Typ").TryGetProperty("TypeName", out typeName);
-	    if (!isFun)
-	    {
-		    typeName = descBase.GetProperty("Typ").GetProperty("Name");
-	    }
-	    
-	    string? type = typeName.GetString();
-	    JsonElement value = decl.GetProperty("Init");
-	    
-	    var vd = new VariableDefinition(TypesReferences[type!]);
-	    Vars.Add(name!, vd);
-	    
-	    md.Body.Variables.Add(vd);
-
-	    if (type!.Equals("Пусто"))
-	    {
-		    proc.Emit(OpCodes.Initobj, TypesReferences[type]);
-	    }
-	    else if (isFun)
-	    {
-		    string? funName = value.GetProperty("Call").GetProperty("Name").GetString();
-		    proc.Emit(OpCodes.Call, Function.Funs[funName!]);
-		    proc.Emit(OpCodes.Stloc, vd);
-	    }
-	    else
-	    {
-		    new Expr(value).GenerateExpr(proc);
-		    proc.Emit(OpCodes.Stloc, vd);
-	    }
-	    
-	    Out.GeneratePrint(vd, type!, proc);
-	    
-	    
-	    // else if (type._arrayType != null)
-	    // {
-		   //  ArrayType at = type._arrayType;
-		   //  Expression exp = at._expression; // length
-		   //  Type t = at._type;
-	    //
-		   //  var arr = new VariableDefinition(GetTypeRef(t).MakeArrayType());
-		   //  md.Body.Variables.Add(arr);
-		   //  GenerateOperation(exp, proc);
-		   //  proc.Emit(OpCodes.Newarr, GetTypeRef(t));
-		   //  proc.Emit(OpCodes.Stloc, arr);
-		   //  
-		   //  _vars.Add(name, arr);
-		   //  // _varsTypes.Add(name, type);
-	    // }
-	    // else if (type._userType != null && _typeDeclarations.Keys.Contains(type._userType._name))
-	    // {
-		   //  VariableDeclaration vewVarDecl = new VariableDeclaration(varDecl._identifier,
-			  //   _typeDeclarations[type._userType._name], varDecl._value);
-		   //  GenerateVarDecl(vewVarDecl, md, proc, name);
-	    // }
-	    // else if (type._userType != null)
-	    // {
-		   //  RecordType recordType = null;
-		   //  Type t = null;
-		   //  foreach (var record in _records)
-		   //  {
-			  //   if (record._identifier._name.Equals(type._userType._name))
-			  //   {
-				 //    recordType = record._type._recordType;
-				 //    t = record._type;
-				 //    break;
-			  //   }
-		   //  }
-	    //
-		   //  var recordDefinition = new VariableDefinition(_recTypeDefinitions[type._userType._name]);
-		   //  md.Body.Variables.Add(recordDefinition);
-		   //  proc.Emit(OpCodes.Newobj, _constructors[type._userType._name]);
-		   //  proc.Emit(OpCodes.Stloc, recordDefinition);
-	    //
-		   //  // var recordDefinition = new VariableDefinition(_recTypeDefinitions[type._userType._name]);
-		   //  // md.Body.Variables.Add(recordDefinition);
-		   //  if (value != null)
-		   //  {
-			  //   int i = 0;
-			  //   VariableDeclaration vd = recordType._variableDeclaration;
-			  //   VariableDeclarations vds = recordType._variableDeclarations;
-			  //   Expressions expressions = value._expressions;
-			  //   Expression expression = null;
-			  //   List<FieldDefinition> fieldDefs = _recFieldDefinitions[type._userType._name];
-			  //   while (expressions != null)
-			  //   {
-				 //    expression = expressions._expression;
-				 //    expressions = expressions._expressions;
-				 //    ProcessField(expression, recordDefinition, proc, fieldDefs[i]);
-	    //
-				 //    if (vd._type._primitiveType._isInt || vd._type._primitiveType._isBoolean)
-				 //    {
-					//     proc.Emit(OpCodes.Ldloc, recordDefinition);
-					//     proc.Emit(OpCodes.Ldfld, fieldDefs[i]);
-					//     proc.Emit(OpCodes.Call,
-					// 	    _asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console),
-					// 		    "WriteLine",
-					// 		    System.Reflection.BindingFlags.Default | System.Reflection.BindingFlags.Static |
-					// 		    System.Reflection.BindingFlags.Public, "System.Int32")));
-				 //    }
-				 //    else if (vd._type._primitiveType._isReal)
-				 //    {
-					//     proc.Emit(OpCodes.Ldloc, recordDefinition);
-					//     proc.Emit(OpCodes.Ldfld, fieldDefs[i]);
-					//     proc.Emit(OpCodes.Call,
-					// 	    _asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(typeof(System.Console),
-					// 		    "WriteLine",
-					// 		    System.Reflection.BindingFlags.Default | System.Reflection.BindingFlags.Static |
-					// 		    System.Reflection.BindingFlags.Public, "System.Double")));
-				 //    }
-	    //
-				 //    if (vds != null)
-				 //    {
-					//     vd = vds._variableDeclaration;
-					//     vds = vds._variableDeclarations;
-				 //    }
-	    //
-				 //    i++;
-			  //   }
-		   //  }
-	    //
-		   //  // _varsTypes.Add(name, t);
-		   //  _vars.Add(name, recordDefinition);
-	    // }
-    }
+    
     
     
     
@@ -722,25 +337,7 @@ public class Parser
         
     }
 
-    private void ParseDecl(JsonElement decl, MethodDefinition md, ILProcessor proc)
-    {
-        // todo if var decl
-        GenerateVarDecl(decl, md, proc); 
-    }
+    
 
-    private void ParseAssignment(JsonElement l, JsonElement r, ILProcessor proc)
-    {
-	    string? name = l.GetProperty("Name").GetString();
-	    string? type = l.GetProperty("Typ").GetProperty("Name").GetString();
-
-	    new Expr(r).GenerateExpr(proc);
-	    proc.Emit(OpCodes.Stloc, Vars[name!]);
-
-	    Out.GeneratePrint(Vars[name!], type!, proc);
-    }
-
-    private void Print(Object o)
-    {
-        Console.WriteLine(o);
-    }
+    
 }
