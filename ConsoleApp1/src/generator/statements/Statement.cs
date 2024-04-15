@@ -43,10 +43,9 @@ public class Statement(JsonElement stmt)
             return;
         }
         
-        if (stmt.TryGetProperty("Cond", out JsonElement cond) && stmt.TryGetProperty("Then", out JsonElement then) && 
-            stmt.TryGetProperty("Else", out JsonElement els))
+        if (IfElse.IsIfElse(stmt))
         {
-	        ParseIfElse(cond, then, els, md, proc);
+	        IfElse.GetIfElse(stmt, md, proc).Parse();
 	        return;
         }
         
@@ -213,38 +212,6 @@ public class Statement(JsonElement stmt)
 	    if (type != null) new Expr(cond).GenerateExpr(proc);
 	    proc.Emit(OpCodes.Stloc, condDef);
     }
-
-    // todo check whether elif exists
-    public void ParseIfElse(JsonElement cond, JsonElement then, JsonElement? els, MethodDefinition md, ILProcessor proc)
-    {
-	    new Expr(cond).GenerateExpr(proc);
-		
-	    var elseEntryPoint = proc.Create(OpCodes.Nop); 
-	    proc.Emit(OpCodes.Brfalse, elseEntryPoint);
-	    
-	    var ifStatements = then.GetProperty("Statements"); // arr
-	    GenerateStatements(ifStatements, md, proc);
-	    
-	    var elseEnd = proc.Create(OpCodes.Nop);
-
-	    if (els.HasValue)
-	    {
-		    var endOfIf = proc.Create(OpCodes.Br, elseEnd);
-		    proc.Append(endOfIf);
-		    proc.Append(elseEntryPoint);
-		    // else
-		    var elsStatements = els.Value.GetProperty("Statements"); // arr
-		    GenerateStatements(elsStatements, md, proc);
-	    }
-	    else
-	    {
-		    proc.Append(elseEntryPoint);
-	    }
-	    proc.Append(elseEnd);
-	    md.Body.OptimizeMacros();
-    }
-    
-    
     
     private void Print(Object o)
     {
