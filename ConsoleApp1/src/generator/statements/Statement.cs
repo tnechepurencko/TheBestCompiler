@@ -68,9 +68,9 @@ public class Statement(JsonElement stmt)
 	        return;
         }
         
-        if (stmt.TryGetProperty("X", out JsonElement xCall) && xCall.TryGetProperty("Call", out JsonElement call)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
+        if (stmt.TryGetProperty("X", out JsonElement xCall) && xCall.TryGetProperty("Call", out _)) // BE CAREFUL HERE BECAUSE EXCEPTION HAS "X" ONLY
         {
-	        ParseFunCall(call, proc);
+	        ParseFunCall(xCall, proc);
 	        return;
         }
         
@@ -90,8 +90,17 @@ public class Statement(JsonElement stmt)
 	    new Expr(xReturn).GenerateExpr(proc);
     }
 
-    public void ParseFunCall(JsonElement call, ILProcessor proc)
+    public void ParseFunCall(JsonElement x, ILProcessor proc)
     {
+	    JsonElement call = x.GetProperty("Call");
+	    JsonElement args = x.GetProperty("Args"); // arr
+
+	    for (int i = 0; i < args.GetArrayLength(); i++)
+	    {
+		    Expr expr = new Expr(args[i]);
+		    expr.GenerateExpr(proc);
+	    }
+		    
 	    string? name = call.GetProperty("Name").GetString();
 	    proc.Emit(OpCodes.Call, Function.Funs[name!]);
 	    proc.Emit(OpCodes.Pop); // todo pop only if not void and not assignment

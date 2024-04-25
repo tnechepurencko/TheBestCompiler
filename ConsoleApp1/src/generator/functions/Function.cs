@@ -24,10 +24,13 @@ public class Function(JsonElement fun, Parser parser)
 	    
         Funs.Add(name!, funMd);
 	    
-        JsonElement p = type.GetProperty("Params"); // [] or null
-        Parameters parameters = new Parameters(p);
-        parameters.GenerateParameters(); // todo
-	    
+        JsonElement p = type.GetProperty("Params"); // [] or null 
+        if (p.ValueKind != JsonValueKind.Null) 
+        {
+	        Parameters parameters = new Parameters(p, funMd);
+	        parameters.GenerateParameters();
+        } 
+        
         JsonElement statements = fun.GetProperty("Seq").GetProperty("Statements");
         // generate stmts
         Statement.GenerateStatements(statements, funMd, funProc);

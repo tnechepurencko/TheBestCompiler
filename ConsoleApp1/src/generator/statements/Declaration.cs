@@ -29,16 +29,33 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
     {  
 	    JsonElement descBase = decl.GetProperty("DeclBase");
 	    string? name = descBase.GetProperty("Name").GetString();
-	    JsonElement typeName;
+	    JsonElement value = decl.GetProperty("Init");
+	    bool isFun = value.TryGetProperty("Call", out _);
 	    
-	    bool isFun = descBase.GetProperty("Typ").TryGetProperty("TypeName", out typeName);
-	    if (!isFun)
+	    JsonElement typeName;
+	    if (isFun)
 	    {
-		    typeName = descBase.GetProperty("Typ").GetProperty("Name");
+		    typeName = descBase.GetProperty("Typ").GetProperty("TypeName");
+	    }
+	    else
+	    {
+		    if (descBase.GetProperty("Typ").TryGetProperty("Name", out _))
+		    {
+			    typeName = descBase.GetProperty("Typ").GetProperty("Name");
+		    }
+		    else
+		    {
+			    typeName = descBase.GetProperty("Typ").GetProperty("TypeName");
+		    }
 	    }
 	    
+	    // bool isFun = descBase.GetProperty("Typ").TryGetProperty("TypeName", out typeName);
+	    // if (!isFun)
+	    // {
+		   //  typeName = descBase.GetProperty("Typ").GetProperty("Name");
+	    // }
+	    
 	    string? type = typeName.GetString();
-	    JsonElement value = decl.GetProperty("Init");
 	    
 	    var vd = new VariableDefinition(Parser.TypesReferences[type!]);
 	    Statement.Vars.Add(name!, vd);
@@ -51,6 +68,14 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 	    }
 	    else if (isFun)
 	    {
+		    JsonElement args = value.GetProperty("Args"); // arr
+		    
+		    for (int i = 0; i < args.GetArrayLength(); i++)
+		    {
+			    Expr expr = new Expr(args[i]);
+			    expr.GenerateExpr(proc);
+		    }
+		    
 		    string? funName = value.GetProperty("Call").GetProperty("Name").GetString();
 		    proc.Emit(OpCodes.Call, Function.Funs[funName!]);
 		    proc.Emit(OpCodes.Stloc, vd);

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.statements;
 using ConsoleApp1.parser;
 using Mono.Cecil.Cil;
@@ -54,7 +55,16 @@ public class Expr(JsonElement operation)
         if (IsVar())
         {
             var name = operation.GetProperty("Name").GetString();
-            proc.Emit(OpCodes.Ldloc, Statement.Vars[name!]);
+
+            if (Parameters.ParamToIdx.ContainsKey(name!)) // parameter
+            {
+                int paramIdx = Parameters.ParamToIdx[name!];
+                Parameters.GenerateLdarg(paramIdx, proc);
+            }
+            else // main/global var
+            {
+                proc.Emit(OpCodes.Ldloc, Statement.Vars[name!]);
+            }
             return;
         }
         
