@@ -6,7 +6,7 @@ namespace ConsoleApp1.generator.print;
 
 public class Out
 {
-    private static readonly Dictionary<string, string> Types = new()
+    public static readonly Dictionary<string, string> Types = new()
     {
         {"Цел64", "System.Int64"},  // types
         {"Строка", "System.String"},

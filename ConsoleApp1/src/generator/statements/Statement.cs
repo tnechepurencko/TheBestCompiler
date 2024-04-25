@@ -2,7 +2,6 @@
 using Cecilifier.Runtime;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.functions;
-using ConsoleApp1.generator.print;
 using ConsoleApp1.parser;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -13,6 +12,7 @@ namespace ConsoleApp1.generator.statements;
 public class Statement(JsonElement stmt)
 {
 	public static Dictionary<string, VariableDefinition> Vars = new();
+	public static List<string> alFileTypes = new() {"css","htm","html","txt","xml"};
 	
 	public static void GenerateStatements(JsonElement statements, MethodDefinition md, ILProcessor proc)
 	{
