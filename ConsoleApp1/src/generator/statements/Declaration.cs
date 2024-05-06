@@ -47,7 +47,8 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 	    }
 	    else if (Vector.Vectors.ContainsKey(type)) // class or vector
 	    {
-		    GenerateVectorDecl(value, name!, type);
+		    Vector vector = new Vector(value, name!, type, md, proc);
+		    vector.GenerateVector();
 	    }
     }
 
@@ -59,28 +60,6 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 	    }
 
 	    return declBase.GetProperty("Typ").GetProperty("TypeName").GetString()!;
-    }
-
-    private void GenerateVectorDecl(JsonElement value, string name, string type)
-    {
-	    string vecType = Vector.Vectors[type];
-	    
-	    var vd = new VariableDefinition(Parser.Asm.MainModule.ImportReference(typeof(System.Collections.Generic.List<>)).MakeGenericInstanceType(Parser.TypesReferences[vecType]));
-	    md.Body.Variables.Add(vd);
-	    Statement.Vars.Add(name, vd);
-	    
-	    proc.Emit(OpCodes.Newobj, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(Vector.TypeToType[vecType], ".ctor",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public)));
-
-	    JsonElement values = value.GetProperty("Composite").GetProperty("Values");
-	    for (int i = 0; i < values.GetArrayLength(); i++)
-	    {
-		    proc.Emit(OpCodes.Dup);
-		    Expr expr = new Expr(values[i]);
-		    expr.GenerateExpr(proc);
-		    proc.Emit(OpCodes.Callvirt, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(Vector.TypeToType[vecType], "Add",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public, Out.Types[vecType])));
-	    }
-	    
-	    proc.Emit(OpCodes.Stloc, vd);
     }
 
     private void GenerateVariableDecl(JsonElement value, string name, string type)

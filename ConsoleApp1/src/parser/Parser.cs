@@ -149,8 +149,9 @@ public class Parser
 		    } else if (type.TryGetProperty("ElementTyp", out _)) // it is an arr
 		    {
 			    _generateCCtor = true;
-			    Vector vector = new Vector(decls[i]);
-			    vector.GenerateVector();
+			    Vector.GenerateVectorType(decls[i]);
+			    // Vector vector = new Vector(decls[i]);
+			    // vector.GenerateVector();
 		    }
 	    }
     }
