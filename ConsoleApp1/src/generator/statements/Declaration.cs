@@ -74,7 +74,7 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 	    }
 	    else
 	    {
-		    new Expr(value).GenerateExpr(proc);
+		    new Expr(value, false).GenerateExpr(proc);
 		    proc.Emit(OpCodes.Stloc, vd);
 	    }
 	    
@@ -93,7 +93,7 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 		    
 	    for (int i = 0; i < args.GetArrayLength(); i++)
 	    {
-		    Expr expr = new Expr(args[i]);
+		    Expr expr = new Expr(args[i], false);
 		    expr.GenerateExpr(proc);
 	    }
 		    

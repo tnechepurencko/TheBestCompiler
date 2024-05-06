@@ -24,7 +24,7 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
 
     public void Parse() // todo check whether elif exists
     {
-        new Expr(cond).GenerateExpr(proc);
+        new Expr(cond, false).GenerateExpr(proc);
 		
         var elseEntryPoint = proc.Create(OpCodes.Nop); 
         proc.Emit(OpCodes.Brfalse, elseEntryPoint);

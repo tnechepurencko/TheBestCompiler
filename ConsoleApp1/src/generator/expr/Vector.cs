@@ -42,31 +42,84 @@ public class Vector(JsonElement vector, string name, string type, MethodDefiniti
         Statement.Vars.Add(name, vd);
 	    
         proc.Emit(OpCodes.Newobj, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(TypeToType[vecType], ".ctor",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public)));
-
         JsonElement values = vector.GetProperty("Composite").GetProperty("Values");
-        if (values.GetArrayLength() > 0)
+        
+        if (HasDefault())
         {
-            GenerateValues(values, vecType);
+            GenerateValuesByDefault(vecType);
+            proc.Emit(OpCodes.Stloc, vd);
+            
+            if (values.GetArrayLength() > 0)
+            {
+                GenerateValuesWithIndices(values, vecType);
+            }
         }
         else
         {
-            GenerateValuesByDefault(vecType);
+            GenerateValues(values, vecType);
+            proc.Emit(OpCodes.Stloc, vd);
         }
-        
-        proc.Emit(OpCodes.Stloc, vd);
+    }
+
+    private void GenerateValuesWithIndices(JsonElement values, string vecType)
+    {
+        JsonElement indices = vector.GetProperty("Composite").GetProperty("Indexes");
+        for (int i = 0; i < indices.GetArrayLength(); i++)
+        {
+            proc.Emit(OpCodes.Ldloc, Statement.Vars[name]);
+            
+            Expr exprIdx = new Expr(indices[i], true);
+            exprIdx.GenerateExpr(proc);
+            
+            Expr exprVal = new Expr(values[i], false);
+            exprVal.GenerateExpr(proc);
+            
+            var bindingFlags = System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public;
+            var method = TypeHelpers.ResolveMethod(TypeToType[vecType], "set_Item", bindingFlags, "System.Int32", Out.Types[vecType]);
+            proc.Emit(OpCodes.Callvirt, Parser.Asm.MainModule.ImportReference(method));
+        }
+    }
+
+    private bool HasDefault()
+    {
+        JsonElement defaultElement = vector.GetProperty("Composite").GetProperty("Default");
+        return defaultElement.ValueKind != JsonValueKind.Null;
     }
 
     private void GenerateValuesByDefault(string vecType)
     {
         JsonElement defaultElement = vector.GetProperty("Composite").GetProperty("Default");
-        if (defaultElement.ValueKind != JsonValueKind.Null)
+        int len = GetLen();
+        for (int i = 0; i < len; i++)
         {
-            int len = vector.GetProperty("Composite").GetProperty("LenExpr").GetProperty("IntVal").GetInt32();
-            for (int i = 0; i < len; i++)
-            {
-                GenerateValue(defaultElement, vecType);
-            }
+            GenerateValue(defaultElement, vecType);
         }
+    }
+
+    private int GetLen() 
+    {
+        JsonElement lenExpr = vector.GetProperty("Composite").GetProperty("LenExpr");
+        if (lenExpr.ValueKind == JsonValueKind.Null)
+        {
+            int maxIdx = -1;
+            JsonElement indices = vector.GetProperty("Composite").GetProperty("Indexes");
+
+            for (int i = 0; i < indices.GetArrayLength(); i++)
+            {
+                // todo now indices are compared as a single value expressions
+                // but here should be a calculator for cases where JsonElem of the index
+                // is equal to the math expr
+
+                if (indices[i].GetProperty("IntVal").GetInt32() > maxIdx)
+                {
+                    maxIdx = indices[i].GetProperty("IntVal").GetInt32();
+                }
+            }
+
+            return maxIdx + 1;
+        }
+        
+        return lenExpr.GetProperty("IntVal").GetInt32();
     }
 
     private void GenerateValues(JsonElement values, string vecType)
@@ -80,8 +133,11 @@ public class Vector(JsonElement vector, string name, string type, MethodDefiniti
     private void GenerateValue(JsonElement value, string vecType)
     {
         proc.Emit(OpCodes.Dup);
-        Expr expr = new Expr(value);
+        Expr expr = new Expr(value, false);
         expr.GenerateExpr(proc);
-        proc.Emit(OpCodes.Callvirt, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(TypeToType[vecType], "Add",System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public, Out.Types[vecType])));
+        
+        var bindingFlags = System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public;
+        var method = TypeHelpers.ResolveMethod(TypeToType[vecType], "Add", bindingFlags, Out.Types[vecType]);
+        proc.Emit(OpCodes.Callvirt, Parser.Asm.MainModule.ImportReference(method));
     }
 }

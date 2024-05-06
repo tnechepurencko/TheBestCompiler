@@ -7,7 +7,7 @@ using Mono.Cecil.Cil;
 
 namespace ConsoleApp1.generator.expr;
 
-public class Expr(JsonElement operation)
+public class Expr(JsonElement operation, bool isIndex)
 {
     private readonly Dictionary<int, List<OpCode>> _operators = new()
     {
@@ -37,12 +37,12 @@ public class Expr(JsonElement operation)
 
     private Expr GetLeft()
     {
-        return new Expr(operation.GetProperty("X"));
+        return new Expr(operation.GetProperty("X"), isIndex);
     }
     
     private Expr GetRight()
     {
-        return new Expr(operation.GetProperty("Y"));
+        return new Expr(operation.GetProperty("Y"), isIndex);
     }
 
     private int GetOperator()
@@ -68,7 +68,7 @@ public class Expr(JsonElement operation)
             return;
         }
         
-        Value.GenerateValue(operation, proc);
+        Value.GenerateValue(operation, proc, isIndex);
     }
 
     private void GenerateOperator(ILProcessor proc)

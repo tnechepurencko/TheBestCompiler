@@ -87,7 +87,7 @@ public class Statement(JsonElement stmt)
 
     public void ParseReturn(JsonElement xReturn, ILProcessor proc)
     {
-	    new Expr(xReturn).GenerateExpr(proc);
+	    new Expr(xReturn, false).GenerateExpr(proc);
     }
 
     public void ParseFunCall(JsonElement x, ILProcessor proc)
@@ -97,7 +97,7 @@ public class Statement(JsonElement stmt)
 
 	    for (int i = 0; i < args.GetArrayLength(); i++)
 	    {
-		    Expr expr = new Expr(args[i]);
+		    Expr expr = new Expr(args[i], false);
 		    expr.GenerateExpr(proc);
 	    }
 		    
@@ -108,7 +108,7 @@ public class Statement(JsonElement stmt)
 
     public void ParseException(JsonElement x, ILProcessor proc)
     {
-	    Value.GenerateValue(x, proc);
+	    Value.GenerateValue(x, proc, false);
 	    proc.Emit(OpCodes.Newobj, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(
 		    typeof(System.Exception), 
 		    ".ctor",
@@ -155,7 +155,7 @@ public class Statement(JsonElement stmt)
 		    JsonElement cond = conds[0]; // todo check why 0 (can there be more?)
 		    
 		    proc.Emit(OpCodes.Ldloc, switchCondition);
-		    new Expr(cond).GenerateExpr(proc);
+		    new Expr(cond, false).GenerateExpr(proc);
 		    proc.Emit(OpCodes.Beq_S, instructions[i]);
 	    }
 	    
@@ -218,7 +218,7 @@ public class Statement(JsonElement stmt)
     public void GenerateCondition(JsonElement cond, ILProcessor proc, VariableDefinition condDef)
     {
 	    string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
-	    if (type != null) new Expr(cond).GenerateExpr(proc);
+	    if (type != null) new Expr(cond, false).GenerateExpr(proc);
 	    proc.Emit(OpCodes.Stloc, condDef);
     }
     

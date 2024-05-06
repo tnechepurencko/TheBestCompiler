@@ -17,7 +17,7 @@ public class Value
         {"Слово64", OpCodes.Ldc_I8}, // like long
     };
     
-    public static void GenerateValue(JsonElement single, ILProcessor proc)
+    public static void GenerateValue(JsonElement single, ILProcessor proc, bool isIndex)
     {
         JsonElement exprBase = single.GetProperty("ExprBase");
         var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
@@ -34,6 +34,12 @@ public class Value
         }
         else if (type.Equals("Цел64"))
         {
+            if (isIndex)
+            {
+                proc.Emit(OpCodes.Ldc_I4, single.GetProperty("IntVal").GetInt32());
+                return;
+            }
+            
             var value = single.GetProperty("IntVal").GetInt64();
             proc.Emit(Types[type], value);
         } 
