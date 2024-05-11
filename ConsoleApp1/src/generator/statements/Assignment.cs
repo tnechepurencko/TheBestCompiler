@@ -9,7 +9,7 @@ public class Assignment(JsonElement left, JsonElement right, ILProcessor proc)
 {
     public static bool IsAssig(JsonElement stmt)
     {
-        return stmt.TryGetProperty("L", out JsonElement lAssig) && stmt.TryGetProperty("R", out JsonElement rAssig);
+        return stmt.TryGetProperty("L", out _) && stmt.TryGetProperty("R", out _);
     }
 
     public static Assignment GetAssig(JsonElement stmt, ILProcessor proc)
