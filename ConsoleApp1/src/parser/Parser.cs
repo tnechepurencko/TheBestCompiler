@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Cecilifier.Runtime;
+using ConsoleApp1.generator.classes;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.statements;
@@ -141,17 +142,18 @@ public class Parser
 		    JsonElement type = decls[i].GetProperty("DeclBase").GetProperty("Typ");
 		    if (type.TryGetProperty("Fields", out _)) // it is a class
 		    {
-			    // todo generate class
-		    } else if (type.TryGetProperty("Params", out _)) // it is a fun
+			    Class cls = new Class(decls[i]);
+			    cls.GenerateClass();
+		    } 
+		    else if (type.TryGetProperty("Params", out _)) // it is a fun
 		    {
 			    Function function = new Function(decls[i], this);
 			    function.GenerateFunction();
-		    } else if (type.TryGetProperty("ElementTyp", out _)) // it is an arr
+		    } 
+		    else if (type.TryGetProperty("ElementTyp", out _)) // it is an arr
 		    {
 			    _generateCCtor = true;
 			    Vector.GenerateVectorType(decls[i]);
-			    // Vector vector = new Vector(decls[i]);
-			    // vector.GenerateVector();
 		    }
 	    }
     }
