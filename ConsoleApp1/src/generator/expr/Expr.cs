@@ -32,7 +32,9 @@ public class Expr(JsonElement operation, bool isIndex)
 
     private bool IsVar()
     {
-        return operation.TryGetProperty("Name", out _) && operation.TryGetProperty("Obj", out _);
+        return operation.TryGetProperty("Name", out JsonElement name) && 
+               name.GetString() != "истина" && name.GetString() != "ложь" && 
+               operation.TryGetProperty("Obj", out _);
     }
 
     private Expr GetLeft()

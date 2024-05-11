@@ -62,7 +62,7 @@ public class While(JsonElement cond, JsonElement seq, MethodDefinition md, ILPro
     
     public void GenerateCondition(VariableDefinition condDef)
     {
-        string? type = cond.GetProperty("Typ").GetProperty("Name").GetString();
+        string? type = cond.GetProperty("ExprBase").GetProperty("Typ").GetProperty("Name").GetString();
         if (type != null) new Expr(cond, false).GenerateExpr(proc);
         proc.Emit(OpCodes.Stloc, condDef);
     }

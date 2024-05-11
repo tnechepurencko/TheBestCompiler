@@ -45,8 +45,9 @@ public class Value
         } 
         else if (type.Equals("Лог"))
         {
-            var value = single.GetProperty("IntVal").GetInt64(); // todo imp
-            proc.Emit(Types[type], value);
+            var value = single.GetProperty("Obj").GetProperty("Value").GetProperty("Value").GetBoolean();
+            // var value = single.GetProperty("IntVal").GetInt64(); // todo imp
+            proc.Emit(Types[type], value ? 1 : 0);
         } 
         else if (type.Equals("Пусто"))
         {

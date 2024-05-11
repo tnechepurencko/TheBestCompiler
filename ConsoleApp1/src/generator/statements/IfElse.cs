@@ -10,14 +10,15 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
 {
     public static bool IsIfElse(JsonElement stmt)
     {
-        return stmt.TryGetProperty("Cond", out _) && stmt.TryGetProperty("Then", out _) && stmt.TryGetProperty("Else", out _);
+        return stmt.TryGetProperty("Cond", out _) &&
+               (stmt.TryGetProperty("Then", out _) || stmt.TryGetProperty("Else", out _));
     }
 
     public static IfElse GetIfElse(JsonElement stmt, MethodDefinition methodDef, ILProcessor ilProc)
     {
-        JsonElement condition = stmt.GetProperty("Cond");
-        JsonElement thenStmt = stmt.GetProperty("Then");
-        JsonElement elsStmt = stmt.GetProperty("Else");
+        stmt.TryGetProperty("Cond", out JsonElement condition);
+        stmt.TryGetProperty("Then", out JsonElement thenStmt);
+        stmt.TryGetProperty("Else", out JsonElement elsStmt);
 
         return new IfElse(condition, thenStmt, elsStmt, methodDef, ilProc);
     }
@@ -28,9 +29,12 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
 		
         var elseEntryPoint = proc.Create(OpCodes.Nop); 
         proc.Emit(OpCodes.Brfalse, elseEntryPoint);
-	    
-        var ifStatements = then.GetProperty("Statements"); // arr
-        Statement.GenerateStatements(ifStatements, md, proc);
+
+        if (then.ValueKind != JsonValueKind.Undefined)
+        {
+            var ifStatements = then.GetProperty("Statements"); // arr
+            Statement.GenerateStatements(ifStatements, md, proc);
+        }
 	    
         var elseEnd = proc.Create(OpCodes.Nop);
 
