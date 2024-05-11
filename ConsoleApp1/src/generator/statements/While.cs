@@ -8,6 +8,8 @@ namespace ConsoleApp1.generator.statements;
 
 public class While(JsonElement cond, JsonElement seq, MethodDefinition md, ILProcessor proc)
 {
+    public static Stack<Instruction> WhileStack = new();
+    
     public static bool IsWhile(JsonElement stmt)
     {
         return stmt.TryGetProperty("Cond", out _) && stmt.TryGetProperty("Seq", out _);
@@ -33,6 +35,7 @@ public class While(JsonElement cond, JsonElement seq, MethodDefinition md, ILPro
         var lblFel = proc.Create(OpCodes.Nop);
         var nop = proc.Create(OpCodes.Nop);
         proc.Append(nop);
+        WhileStack.Push(lblFel);
 	    
         proc.Emit(OpCodes.Ldloc, condDef); // while condDef is not false
         proc.Emit(OpCodes.Brfalse, lblFel);
@@ -53,6 +56,8 @@ public class While(JsonElement cond, JsonElement seq, MethodDefinition md, ILPro
         proc.Emit(OpCodes.Pop);
         proc.Emit(OpCodes.Br, nop);
         proc.Append(lblFel);
+
+        WhileStack.Pop();
     }
     
     public void GenerateCondition(VariableDefinition condDef)

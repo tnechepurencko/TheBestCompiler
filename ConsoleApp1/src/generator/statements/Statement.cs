@@ -25,6 +25,12 @@ public class Statement(JsonElement stmt)
 	
     public void GenerateStatement(TypeReference? returnType, ILProcessor proc, MethodDefinition md)
     {
+	    if (Break.IsBreak(stmt))
+	    {
+		    Break.GenerateBreak(proc);
+		    return;
+	    }
+	    
         if (Declaration.IsDecl(stmt))
         {
 	        Declaration.GetDecl(stmt, md, proc).Parse();

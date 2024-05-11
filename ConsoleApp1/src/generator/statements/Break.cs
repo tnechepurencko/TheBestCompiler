@@ -10,8 +10,8 @@ public class Break
         return stmt.TryGetProperty("Break", out _);
     }
 
-    public static void GenerateBreak(ILProcessor proc, Instruction? lblFel)
+    public static void GenerateBreak(ILProcessor proc)
     {
-        proc.Emit(OpCodes.Br, lblFel);
+        proc.Emit(OpCodes.Br, While.WhileStack.Peek());
     }
 }
