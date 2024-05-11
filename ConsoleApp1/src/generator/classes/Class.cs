@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 using Cecilifier.Runtime;
+using ConsoleApp1.generator.expr;
+using ConsoleApp1.generator.statements;
 using ConsoleApp1.parser;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -8,8 +10,10 @@ namespace ConsoleApp1.generator.classes;
 
 public class Class(JsonElement cls)
 {
+    private MethodDefinition? _ctorMd;
     private TypeDefinition? _classTypeDefinition;
     private Dictionary<string, Field> _fields = new();
+    public static Dictionary<string, Class> Classes = new();
     
     public void GenerateClass()
     {
@@ -25,6 +29,7 @@ public class Class(JsonElement cls)
         }
 
         GenerateCtor();
+        Classes.Add(name!, this);
     }
 
     private void GenerateField(JsonElement field)
@@ -37,11 +42,10 @@ public class Class(JsonElement cls)
     private void GenerateCtor()
     {
         var attributes = MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.RTSpecialName | MethodAttributes.SpecialName;
-        var md = new MethodDefinition(".ctor", attributes, Parser.Asm.MainModule.TypeSystem.Void);
-        _classTypeDefinition!.Methods.Add(md);
-        var proc = md.Body.GetILProcessor();
+        _ctorMd = new MethodDefinition(".ctor", attributes, Parser.Asm.MainModule.TypeSystem.Void);
+        _classTypeDefinition!.Methods.Add(_ctorMd);
+        var proc = _ctorMd.Body.GetILProcessor();
 
-        //public int l = 7;
         foreach (var field in _fields.Values)
         {
             proc.Emit(OpCodes.Ldarg_0);
@@ -52,5 +56,31 @@ public class Class(JsonElement cls)
         proc.Emit(OpCodes.Ldarg_0);
         proc.Emit(OpCodes.Call, Parser.Asm.MainModule.ImportReference(TypeHelpers.DefaultCtorFor(_classTypeDefinition.BaseType)));
         proc.Emit(OpCodes.Ret);
+    }
+
+    public static void GenerateClassDecl(JsonElement value, string name, string type, MethodDefinition md, ILProcessor proc)
+    {
+        Class cls = Classes[type];
+        
+        var vd = new VariableDefinition(cls._classTypeDefinition);
+        Statement.Vars.Add(name, vd);
+        
+        md.Body.Variables.Add(vd);
+        proc.Emit(OpCodes.Newobj, cls._ctorMd);
+        proc.Emit(OpCodes.Stloc, vd);
+
+        JsonElement values = value.GetProperty("Values"); // arr
+        for (int i = 0; i < values.GetArrayLength(); i++)
+        {
+            string? fName = values[i].GetProperty("Name").GetString();
+            JsonElement newValue = values[i].GetProperty("Value");
+            
+            Field field = cls._fields[fName!];
+            
+            proc.Emit(OpCodes.Ldloc, vd);
+            Expr expr = new Expr(newValue, false);
+            expr.GenerateExpr(proc);
+            proc.Emit(OpCodes.Stfld, field.FieldDefinition);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Cecilifier.Runtime;
+using ConsoleApp1.generator.classes;
 using ConsoleApp1.generator.expr;
 using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.print;
@@ -45,10 +46,14 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 	    {
 		    GenerateVariableDecl(value, name!, type);
 	    }
-	    else if (Vector.Vectors.ContainsKey(type)) // class or vector
+	    else if (Vector.Vectors.ContainsKey(type)) // vector
 	    {
 		    Vector vector = new Vector(value, name!, type, md, proc);
 		    vector.GenerateVector();
+	    }
+	    else if (Class.Classes.ContainsKey(type))
+	    {
+		    Class.GenerateClassDecl(value, name!, type, md, proc);
 	    }
     }
 
