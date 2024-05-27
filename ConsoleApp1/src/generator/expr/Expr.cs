@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+using ConsoleApp1.generator.classes;
 using ConsoleApp1.generator.functions;
 using ConsoleApp1.generator.statements;
 using ConsoleApp1.parser;
@@ -63,6 +64,10 @@ public class Expr(JsonElement operation, bool isIndex)
                 int paramIdx = Parameters.ParamToIdx[name!];
                 Parameters.GenerateLdarg(paramIdx, proc);
             }
+            else if (SingleValueClass.Constants.ContainsKey(name!)) // const
+            {
+                proc.Emit(OpCodes.Ldsfld, SingleValueClass.Constants[name!]);                
+            } 
             else // main/global var
             {
                 proc.Emit(OpCodes.Ldloc, Statement.Vars[name!]);

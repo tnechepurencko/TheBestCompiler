@@ -25,7 +25,7 @@ public class Value
         
         if (type.Equals("Строка")) // types
         {
-            proc.Emit(Types[type], GetString(single));
+            proc.Emit(Types[type], single.GetProperty("StrVal").GetString());
         }
         else if (type.Equals("Вещ64"))
         {
@@ -65,17 +65,4 @@ public class Value
             proc.Emit(Types[type], value);
         } 
     }
-
-    private static string GetString(JsonElement single)
-    {
-        var chars = single.GetProperty("StrVal"); // arr
-        char[] charArray = new char[chars.GetArrayLength()];
-        
-        for (int i = 0; i < chars.GetArrayLength(); i++)
-        {
-            charArray[i] = (char)chars[i].GetInt32();
-        }
-        
-        return new string(charArray);
-    } 
 }

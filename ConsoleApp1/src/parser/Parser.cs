@@ -155,6 +155,11 @@ public class Parser
 			    _generateCCtor = true;
 			    Vector.GenerateVectorType(decls[i]);
 		    }
+		    else // it is a const
+		    {
+			    SingleValueClass singleValueClass = new SingleValueClass(decls[i]);
+			    singleValueClass.GenerateClass();
+		    }
 	    }
     }
 
