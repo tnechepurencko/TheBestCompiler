@@ -1,5 +1,6 @@
 ﻿using Cecilifier.Runtime;
 using ConsoleApp1.parser;
+using Mono.Cecil;
 using Mono.Cecil.Cil;
 
 namespace ConsoleApp1.generator.print;
@@ -31,5 +32,17 @@ public class Out
             "WriteLine",
             System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, 
             origType)));
+    }
+
+    public static void GenerateFieldPrint(VariableDefinition clsVd, FieldDefinition fd, string type, ILProcessor proc)
+    {
+        proc.Emit(OpCodes.Ldloc, clsVd);
+        proc.Emit(OpCodes.Ldfld, fd);
+        proc.Emit(OpCodes.Call, Parser.Asm.MainModule.ImportReference(TypeHelpers.ResolveMethod(
+            typeof(System.Console), 
+            "WriteLine",
+            System.Reflection.BindingFlags.Default|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public, 
+            Types[type])));
+
     }
 }

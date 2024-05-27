@@ -19,4 +19,9 @@ public class Field
         Value = new Expr(field.GetProperty("Init"), false);
         FieldDefinition = new FieldDefinition(Name, FieldAttributes.Public, Parser.TypesReferences[Type]);
     }
+
+    public static bool IsField(JsonElement var)
+    {
+        return var.TryGetProperty("X", out _);
+    }
 }

@@ -12,7 +12,7 @@ public class Class(JsonElement cls)
 {
     private MethodDefinition? _ctorMd;
     private TypeDefinition? _classTypeDefinition;
-    private Dictionary<string, Field> _fields = new();
+    public Dictionary<string, Field> Fields = new();
     public static Dictionary<string, Class> Classes = new();
     
     public void GenerateClass()
@@ -35,7 +35,7 @@ public class Class(JsonElement cls)
     private void GenerateField(JsonElement field)
     {
         Field f = new Field(field);
-        _fields.Add(f.Name, f);
+        Fields.Add(f.Name, f);
         _classTypeDefinition!.Fields.Add(f.FieldDefinition);
     }
 
@@ -46,7 +46,7 @@ public class Class(JsonElement cls)
         _classTypeDefinition!.Methods.Add(_ctorMd);
         var proc = _ctorMd.Body.GetILProcessor();
 
-        foreach (var field in _fields.Values)
+        foreach (var field in Fields.Values)
         {
             proc.Emit(OpCodes.Ldarg_0);
             field.Value.GenerateExpr(proc);
@@ -75,7 +75,7 @@ public class Class(JsonElement cls)
             string? fName = values[i].GetProperty("Name").GetString();
             JsonElement newValue = values[i].GetProperty("Value");
             
-            Field field = cls._fields[fName!];
+            Field field = cls.Fields[fName!];
             
             proc.Emit(OpCodes.Ldloc, vd);
             Expr expr = new Expr(newValue, false);

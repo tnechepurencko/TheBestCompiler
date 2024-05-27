@@ -68,6 +68,16 @@ public class Expr(JsonElement operation, bool isIndex)
             {
                 proc.Emit(OpCodes.Ldsfld, SingleValueClass.Constants[name!]);                
             } 
+            else if (Field.IsField(operation))
+            {
+                JsonElement clsInfo = operation.GetProperty("X");
+                string? clsName = clsInfo.GetProperty("ExprBase").GetProperty("Typ").GetProperty("TypeName").GetString();
+                Field field = Class.Classes[clsName!].Fields[name!];
+                string? clsVarName = clsInfo.GetProperty("Name").GetString();
+            
+                proc.Emit(OpCodes.Ldloc, Statement.Vars[clsVarName!]);
+                proc.Emit(OpCodes.Ldfld, field.FieldDefinition);
+            } 
             else // main/global var
             {
                 proc.Emit(OpCodes.Ldloc, Statement.Vars[name!]);

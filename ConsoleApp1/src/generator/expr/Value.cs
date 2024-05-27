@@ -25,7 +25,8 @@ public class Value
         
         if (type.Equals("Строка")) // types
         {
-            proc.Emit(Types[type], single.GetProperty("StrVal").GetString());
+            var strVal = single.GetProperty("StrVal").GetString();
+            proc.Emit(Types[type], strVal);
         }
         else if (type.Equals("Вещ64"))
         {
