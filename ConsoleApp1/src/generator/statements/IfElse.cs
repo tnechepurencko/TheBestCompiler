@@ -44,8 +44,15 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
             proc.Append(endOfIf);
             proc.Append(elseEntryPoint);
             // else
-            var elsStatements = els.Value.GetProperty("Statements"); // arr
-            Statement.GenerateStatements(elsStatements, md, proc);
+            if (_hasElif())
+            {
+                GetIfElse(els.Value, md, proc).Parse();
+            }
+            else
+            {
+                var elsStatements = els.Value.GetProperty("Statements"); // arr
+                Statement.GenerateStatements(elsStatements, md, proc);
+            }
         }
         else
         {
@@ -53,5 +60,10 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
         }
         proc.Append(elseEnd);
         md.Body.OptimizeMacros();
+    }
+
+    private bool _hasElif()
+    {
+        return els.Value.TryGetProperty("Cond", out _);
     }
 }
