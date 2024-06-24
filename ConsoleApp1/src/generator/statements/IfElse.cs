@@ -64,6 +64,7 @@ public class IfElse(JsonElement cond, JsonElement then, JsonElement? els, Method
 
     private bool _hasElif()
     {
-        return els.Value.TryGetProperty("Cond", out _);
+        return false;
+        // return els.Value.TryGetProperty("Cond", out _);
     }
 }

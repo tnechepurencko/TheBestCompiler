@@ -42,7 +42,7 @@ public class Assignment(JsonElement left, JsonElement right, ILProcessor proc)
             new Expr(right, false).GenerateExpr(proc);
             proc.Emit(OpCodes.Stloc, Statement.Vars[name!]);
             
-            type = left.GetProperty("ExprBase").GetProperty("Typ").GetProperty("Name").GetString();
+            type = left.GetProperty("ExprBase").GetProperty("Typ").GetProperty("TypeName").GetString();
             Out.GeneratePrint(Statement.Vars[name!], type!, proc);
         }
     }

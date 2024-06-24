@@ -20,7 +20,16 @@ public class Value
     public static void GenerateValue(JsonElement single, ILProcessor proc, bool isIndex)
     {
         JsonElement exprBase = single.GetProperty("ExprBase");
-        var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
+        var t = exprBase.GetProperty("Typ");
+        string type;
+        if (t.TryGetProperty("TypeName", out _))
+        {
+            type = t.GetProperty("TypeName").GetString()!;
+        }
+        else
+        {
+            type = t.GetProperty("Name").GetString()!;
+        }
         Debug.Assert(type != null, nameof(type) + " != null");
         
         if (type.Equals("Строка")) // types

@@ -25,7 +25,7 @@ public class UnaryOperator(JsonElement unary, bool inc, ILProcessor proc)
     public void Parse()
     {
         var exprBase = unary.GetProperty("ExprBase");
-        var type = exprBase.GetProperty("Typ").GetProperty("Name").GetString();
+        var type = exprBase.GetProperty("Typ").GetProperty("TypeName").GetString();
         Debug.Assert(type != null, nameof(type) + " != null");
 	    
         var name = unary.GetProperty("Name").GetString();
