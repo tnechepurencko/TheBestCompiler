@@ -45,7 +45,7 @@ public class While(JsonElement cond, JsonElement seq, MethodDefinition md, ILPro
         {
             GenerateCondition(condDef);
             Statement statement = new Statement(statements[i]);
-            statement.GenerateStatement(null, proc, md);
+            statement.GenerateStatement(proc, md);
         }
 	    
         proc.Emit(OpCodes.Ldloc, varIter);

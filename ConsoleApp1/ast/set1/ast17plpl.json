@@ -1,0 +1,706 @@
+﻿{
+  "Pos": 65537,
+  "Name": "привет",
+  "Imports": [],
+  "Decl": [],
+  "Entry": {
+    "Pos": 1179649,
+    "Seq": {
+      "StatementBase": {
+        "Pos": 1966081
+      },
+      "Statements": [
+        {
+          "StatementBase": {
+            "Pos": 3145729
+          },
+          "D": {
+            "DeclBase": {
+              "Pos": 2359297,
+              "Name": "а",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Цел64"
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 2686977,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "ReadOnly": true
+              },
+              "Kind": 0,
+              "IntVal": 5,
+              "WordVal": 0,
+              "Float.Str": "",
+              "StrVal": ""
+            },
+            "Later": false,
+            "AssignOnce": false,
+            "OutParam": false
+          }
+        },
+        {
+          "StatementBase": {
+            "Pos": 3211265
+          },
+          "LInc": {
+            "ExprBase": {
+              "Pos": 3145729,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Цел64"
+              },
+              "ReadOnly": false
+            },
+            "Name": "а",
+            "Obj": {
+              "DeclBase": {
+                "Pos": 2359297,
+                "Name": "а",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 2686977,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 5,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "Later": false,
+              "AssignOnce": false,
+              "OutParam": false
+            }
+          }
+        },
+        {
+          "StatementBase": {
+            "Pos": 3801089
+          },
+          "LDec": {
+            "ExprBase": {
+              "Pos": 3735553,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Цел64"
+              },
+              "ReadOnly": false
+            },
+            "Name": "а",
+            "Obj": {
+              "DeclBase": {
+                "Pos": 2359297,
+                "Name": "а",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 2686977,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 5,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "Later": false,
+              "AssignOnce": false,
+              "OutParam": false
+            }
+          }
+        }
+      ],
+      "Inner": {
+        "Outer": {
+          "Outer": {
+            "Outer": null,
+            "Names": {
+              "Слово64": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Слово64",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Слово64"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "Символ": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Символ",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Символ"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "пусто": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "пусто",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Пусто"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Value": {
+                  "ExprBase": {
+                    "Pos": 0,
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Пусто"
+                    },
+                    "ReadOnly": false
+                  },
+                  "Kind": 5,
+                  "IntVal": 0,
+                  "WordVal": 0,
+                  "Float.Str": "",
+                  "StrVal": ""
+                }
+              },
+              "Байт": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Байт",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Байт"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "Строка8": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Строка8",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Строка8"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "ложь": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "ложь",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Лог"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Value": {
+                  "ExprBase": {
+                    "Pos": 0,
+                    "Typ": null,
+                    "ReadOnly": false
+                  },
+                  "Value": false
+                }
+              },
+              "нечто": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "нечто",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "нет результата"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Method": false
+              },
+              "Вещ64": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Вещ64",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Вещ64"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "Лог": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Лог",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Лог"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "Пусто": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Пусто",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Пусто"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "длина": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "длина",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "нет результата"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Method": false
+              },
+              "тег": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "тег",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "нет результата"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Method": false
+              },
+              "Цел64": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Цел64",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "Строка": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "Строка",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Строка"
+                  },
+                  "Exported": false,
+                  "Host": null
+                }
+              },
+              "истина": {
+                "DeclBase": {
+                  "Pos": 0,
+                  "Name": "истина",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Лог"
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Value": {
+                  "ExprBase": {
+                    "Pos": 0,
+                    "Typ": null,
+                    "ReadOnly": false
+                  },
+                  "Value": true
+                }
+              }
+            }
+          },
+          "Names": {}
+        },
+        "Names": {
+          "а": {
+            "DeclBase": {
+              "Pos": 2359297,
+              "Name": "а",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Цел64"
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 2686977,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "ReadOnly": true
+              },
+              "Kind": 0,
+              "IntVal": 5,
+              "WordVal": 0,
+              "Float.Str": "",
+              "StrVal": ""
+            },
+            "Later": false,
+            "AssignOnce": false,
+            "OutParam": false
+          }
+        }
+      }
+    }
+  },
+  "Inner": {
+    "Outer": {
+      "Outer": null,
+      "Names": {
+        "Слово64": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Слово64",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Слово64"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "Символ": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Символ",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Символ"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "пусто": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "пусто",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Пусто"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Value": {
+            "ExprBase": {
+              "Pos": 0,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Пусто"
+              },
+              "ReadOnly": false
+            },
+            "Kind": 5,
+            "IntVal": 0,
+            "WordVal": 0,
+            "Float.Str": "",
+            "StrVal": ""
+          }
+        },
+        "Байт": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Байт",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Байт"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "Строка8": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Строка8",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Строка8"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "ложь": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "ложь",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Лог"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Value": {
+            "ExprBase": {
+              "Pos": 0,
+              "Typ": null,
+              "ReadOnly": false
+            },
+            "Value": false
+          }
+        },
+        "Вещ64": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Вещ64",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Вещ64"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "Лог": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Лог",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Лог"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "Пусто": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Пусто",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Пусто"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "длина": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "длина",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "нет результата"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Method": false
+        },
+        "тег": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "тег",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "нет результата"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Method": false
+        },
+        "нечто": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "нечто",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "нет результата"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Method": false
+        },
+        "Цел64": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Цел64",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Цел64"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "Строка": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "Строка",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Строка"
+            },
+            "Exported": false,
+            "Host": null
+          }
+        },
+        "истина": {
+          "DeclBase": {
+            "Pos": 0,
+            "Name": "истина",
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Лог"
+            },
+            "Exported": false,
+            "Host": null
+          },
+          "Value": {
+            "ExprBase": {
+              "Pos": 0,
+              "Typ": null,
+              "ReadOnly": false
+            },
+            "Value": true
+          }
+        }
+      }
+    },
+    "Names": {}
+  },
+  "Setting": null
+}

@@ -2,4 +2,3 @@ src/ast/*
 
 exe/*
 test/*
-ast/*

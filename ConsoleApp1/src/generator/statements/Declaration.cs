@@ -25,11 +25,6 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 
     public void Parse()
     {
-        GenerateVarDecl(); 
-    }
-    
-    public void GenerateVarDecl()
-    {  
 	    JsonElement descBase = decl.GetProperty("DeclBase");
 	    string? name = descBase.GetProperty("Name").GetString();
 	    JsonElement value = decl.GetProperty("Init");
@@ -64,7 +59,12 @@ public class Declaration(JsonElement decl, MethodDefinition md, ILProcessor proc
 		    return name.GetString()!;
 	    }
 
-	    return declBase.GetProperty("Typ").GetProperty("TypeName").GetString()!;
+	    return declBase.GetProperty("Typ").GetProperty("TypeName").GetString()!; 
+    }
+    
+    public void GenerateVarDecl()
+    {  
+	    
     }
 
     private void GenerateVariableDecl(JsonElement value, string name, string type)

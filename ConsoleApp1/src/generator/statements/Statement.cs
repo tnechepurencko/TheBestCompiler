@@ -19,11 +19,11 @@ public class Statement(JsonElement stmt)
 		for (int i = 0; i < statements.GetArrayLength(); i++)
 		{
 			Statement statement = new Statement(statements[i]);
-			statement.GenerateStatement(null, proc, md);
+			statement.GenerateStatement(proc, md);
 		}
 	}
 	
-    public void GenerateStatement(TypeReference? returnType, ILProcessor proc, MethodDefinition md)
+    public void GenerateStatement(ILProcessor proc, MethodDefinition md)
     {
 	    if (Break.IsBreak(stmt))
 	    {

@@ -1,0 +1,1472 @@
+﻿{
+  "Pos": 65537,
+  "Name": "x",
+  "Imports": [],
+  "Decl": [
+    {
+      "DeclBase": {
+        "Pos": 1114113,
+        "Name": "А",
+        "Typ": {
+          "TypeBase": {
+            "Pos": 1376257
+          },
+          "ElementTyp": {
+            "TypeBase": {
+              "Pos": 1507329
+            },
+            "TypeName": "Цел64",
+            "ModuleName": "",
+            "TypeDecl": {
+              "DeclBase": {
+                "Pos": 0,
+                "Name": "Цел64",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "Exported": false,
+                "Host": null
+              }
+            },
+            "Typ": {
+              "TypeBase": {
+                "Pos": 0
+              },
+              "Name": "Цел64"
+            }
+          }
+        },
+        "Exported": false,
+        "Host": null
+      }
+    }
+  ],
+  "Entry": {
+    "Pos": 2097153,
+    "Seq": {
+      "StatementBase": {
+        "Pos": 3014657
+      },
+      "Statements": [
+        {
+          "StatementBase": {
+            "Pos": 4915201
+          },
+          "D": {
+            "DeclBase": {
+              "Pos": 3407873,
+              "Name": "а",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 3670017
+                },
+                "TypeName": "А",
+                "ModuleName": "",
+                "TypeDecl": {
+                  "DeclBase": {
+                    "Pos": 1114113,
+                    "Name": "А",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "ElementTyp": {
+                        "TypeBase": {
+                          "Pos": 1507329
+                        },
+                        "TypeName": "Цел64",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 0,
+                            "Name": "Цел64",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        }
+                      }
+                    },
+                    "Exported": false,
+                    "Host": null
+                  }
+                },
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 1376257
+                  },
+                  "ElementTyp": {
+                    "TypeBase": {
+                      "Pos": 1507329
+                    },
+                    "TypeName": "Цел64",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 0,
+                        "Name": "Цел64",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    }
+                  }
+                }
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 3735553,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 3670017
+                  },
+                  "TypeName": "А",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "А",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "ElementTyp": {
+                          "TypeBase": {
+                            "Pos": 1507329
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        }
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "ElementTyp": {
+                      "TypeBase": {
+                        "Pos": 1507329
+                      },
+                      "TypeName": "Цел64",
+                      "ModuleName": "",
+                      "TypeDecl": {
+                        "DeclBase": {
+                          "Pos": 0,
+                          "Name": "Цел64",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "Exported": false,
+                          "Host": null
+                        }
+                      },
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      }
+                    }
+                  }
+                },
+                "ReadOnly": false
+              },
+              "X": null,
+              "Index": null,
+              "Composite": {
+                "ExprBase": {
+                  "Pos": 3735553,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 3670017
+                    },
+                    "TypeName": "А",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 1114113,
+                        "Name": "А",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 1376257
+                          },
+                          "ElementTyp": {
+                            "TypeBase": {
+                              "Pos": 1507329
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "ElementTyp": {
+                        "TypeBase": {
+                          "Pos": 1507329
+                        },
+                        "TypeName": "Цел64",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 0,
+                            "Name": "Цел64",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        }
+                      }
+                    }
+                  },
+                  "ReadOnly": false
+                },
+                "LenExpr": null,
+                "Length": -1,
+                "CapExpr": null,
+                "Default": null,
+                "Indexes": [],
+                "MaxIndex": -1,
+                "Values": [
+                  {
+                    "ExprBase": {
+                      "Pos": 3801089,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true
+                    },
+                    "Kind": 0,
+                    "IntVal": 1,
+                    "WordVal": 0,
+                    "Float.Str": "",
+                    "StrVal": ""
+                  },
+                  {
+                    "ExprBase": {
+                      "Pos": 3997697,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true
+                    },
+                    "Kind": 0,
+                    "IntVal": 2,
+                    "WordVal": 0,
+                    "Float.Str": "",
+                    "StrVal": ""
+                  },
+                  {
+                    "ExprBase": {
+                      "Pos": 4194305,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true
+                    },
+                    "Kind": 0,
+                    "IntVal": 6,
+                    "WordVal": 0,
+                    "Float.Str": "",
+                    "StrVal": ""
+                  },
+                  {
+                    "ExprBase": {
+                      "Pos": 4390913,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true
+                    },
+                    "Kind": 0,
+                    "IntVal": 3,
+                    "WordVal": 0,
+                    "Float.Str": "",
+                    "StrVal": ""
+                  }
+                ]
+              }
+            },
+            "Later": false,
+            "AssignOnce": true,
+            "OutParam": false
+          }
+        },
+        {
+          "StatementBase": {
+            "Pos": 5242881
+          },
+          "L": {
+            "ExprBase": {
+              "Pos": 4980737,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 1507329
+                },
+                "TypeName": "Цел64",
+                "ModuleName": "",
+                "TypeDecl": {
+                  "DeclBase": {
+                    "Pos": 0,
+                    "Name": "Цел64",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    },
+                    "Exported": false,
+                    "Host": null
+                  }
+                },
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                }
+              },
+              "ReadOnly": false
+            },
+            "X": {
+              "ExprBase": {
+                "Pos": 4915201,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 3670017
+                  },
+                  "TypeName": "А",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "А",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "ElementTyp": {
+                          "TypeBase": {
+                            "Pos": 1507329
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        }
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "ElementTyp": {
+                      "TypeBase": {
+                        "Pos": 1507329
+                      },
+                      "TypeName": "Цел64",
+                      "ModuleName": "",
+                      "TypeDecl": {
+                        "DeclBase": {
+                          "Pos": 0,
+                          "Name": "Цел64",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "Exported": false,
+                          "Host": null
+                        }
+                      },
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      }
+                    }
+                  }
+                },
+                "ReadOnly": false
+              },
+              "Name": "а",
+              "Obj": {
+                "DeclBase": {
+                  "Pos": 3407873,
+                  "Name": "а",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 3670017
+                    },
+                    "TypeName": "А",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 1114113,
+                        "Name": "А",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 1376257
+                          },
+                          "ElementTyp": {
+                            "TypeBase": {
+                              "Pos": 1507329
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "ElementTyp": {
+                        "TypeBase": {
+                          "Pos": 1507329
+                        },
+                        "TypeName": "Цел64",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 0,
+                            "Name": "Цел64",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        }
+                      }
+                    }
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Init": {
+                  "ExprBase": {
+                    "Pos": 3735553,
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 3670017
+                      },
+                      "TypeName": "А",
+                      "ModuleName": "",
+                      "TypeDecl": {
+                        "DeclBase": {
+                          "Pos": 1114113,
+                          "Name": "А",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 1376257
+                            },
+                            "ElementTyp": {
+                              "TypeBase": {
+                                "Pos": 1507329
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        }
+                      },
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "ElementTyp": {
+                          "TypeBase": {
+                            "Pos": 1507329
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        }
+                      }
+                    },
+                    "ReadOnly": false
+                  },
+                  "X": null,
+                  "Index": null,
+                  "Composite": {
+                    "ExprBase": {
+                      "Pos": 3735553,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 3670017
+                        },
+                        "TypeName": "А",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 1114113,
+                            "Name": "А",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 1376257
+                              },
+                              "ElementTyp": {
+                                "TypeBase": {
+                                  "Pos": 1507329
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 1376257
+                          },
+                          "ElementTyp": {
+                            "TypeBase": {
+                              "Pos": 1507329
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          }
+                        }
+                      },
+                      "ReadOnly": false
+                    },
+                    "LenExpr": null,
+                    "Length": -1,
+                    "CapExpr": null,
+                    "Default": null,
+                    "Indexes": [],
+                    "MaxIndex": -1,
+                    "Values": [
+                      {
+                        "ExprBase": {
+                          "Pos": 3801089,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 1,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      {
+                        "ExprBase": {
+                          "Pos": 3997697,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 2,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      {
+                        "ExprBase": {
+                          "Pos": 4194305,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 6,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      {
+                        "ExprBase": {
+                          "Pos": 4390913,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 3,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      }
+                    ]
+                  }
+                },
+                "Later": false,
+                "AssignOnce": true,
+                "OutParam": false
+              }
+            },
+            "Index": {
+              "ExprBase": {
+                "Pos": 5046273,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "ReadOnly": true
+              },
+              "Kind": 0,
+              "IntVal": 0,
+              "WordVal": 0,
+              "Float.Str": "",
+              "StrVal": ""
+            },
+            "Composite": null
+          },
+          "R": {
+            "ExprBase": {
+              "Pos": 5439489,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "Цел64"
+              },
+              "ReadOnly": true
+            },
+            "Kind": 0,
+            "IntVal": 8,
+            "WordVal": 0,
+            "Float.Str": "",
+            "StrVal": ""
+          }
+        },
+        {
+          "StatementBase": {
+            "Pos": 7143425
+          },
+          "D": {
+            "DeclBase": {
+              "Pos": 6291457,
+              "Name": "н",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 1507329
+                },
+                "TypeName": "Цел64",
+                "ModuleName": "",
+                "TypeDecl": {
+                  "DeclBase": {
+                    "Pos": 0,
+                    "Name": "Цел64",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    },
+                    "Exported": false,
+                    "Host": null
+                  }
+                },
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                }
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 6684673,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 1507329
+                  },
+                  "TypeName": "Цел64",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 0,
+                      "Name": "Цел64",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  }
+                },
+                "ReadOnly": false
+              },
+              "X": {
+                "ExprBase": {
+                  "Pos": 6619137,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 3670017
+                    },
+                    "TypeName": "А",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 1114113,
+                        "Name": "А",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 1376257
+                          },
+                          "ElementTyp": {
+                            "TypeBase": {
+                              "Pos": 1507329
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "ElementTyp": {
+                        "TypeBase": {
+                          "Pos": 1507329
+                        },
+                        "TypeName": "Цел64",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 0,
+                            "Name": "Цел64",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        }
+                      }
+                    }
+                  },
+                  "ReadOnly": false
+                },
+                "Name": "а",
+                "Obj": {
+                  "DeclBase": {
+                    "Pos": 3407873,
+                    "Name": "а",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 3670017
+                      },
+                      "TypeName": "А",
+                      "ModuleName": "",
+                      "TypeDecl": {
+                        "DeclBase": {
+                          "Pos": 1114113,
+                          "Name": "А",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 1376257
+                            },
+                            "ElementTyp": {
+                              "TypeBase": {
+                                "Pos": 1507329
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        }
+                      },
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "ElementTyp": {
+                          "TypeBase": {
+                            "Pos": 1507329
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        }
+                      }
+                    },
+                    "Exported": false,
+                    "Host": null
+                  },
+                  "Init": {
+                    "ExprBase": {
+                      "Pos": 3735553,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 3670017
+                        },
+                        "TypeName": "А",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 1114113,
+                            "Name": "А",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 1376257
+                              },
+                              "ElementTyp": {
+                                "TypeBase": {
+                                  "Pos": 1507329
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 1376257
+                          },
+                          "ElementTyp": {
+                            "TypeBase": {
+                              "Pos": 1507329
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          }
+                        }
+                      },
+                      "ReadOnly": false
+                    },
+                    "X": null,
+                    "Index": null,
+                    "Composite": {
+                      "ExprBase": {
+                        "Pos": 3735553,
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 3670017
+                          },
+                          "TypeName": "А",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 1114113,
+                              "Name": "А",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 1376257
+                                },
+                                "ElementTyp": {
+                                  "TypeBase": {
+                                    "Pos": 1507329
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 1376257
+                            },
+                            "ElementTyp": {
+                              "TypeBase": {
+                                "Pos": 1507329
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            }
+                          }
+                        },
+                        "ReadOnly": false
+                      },
+                      "LenExpr": null,
+                      "Length": -1,
+                      "CapExpr": null,
+                      "Default": null,
+                      "Indexes": [],
+                      "MaxIndex": -1,
+                      "Values": [
+                        {
+                          "ExprBase": {
+                            "Pos": 3801089,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 1,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        {
+                          "ExprBase": {
+                            "Pos": 3997697,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 2,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        {
+                          "ExprBase": {
+                            "Pos": 4194305,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 6,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        {
+                          "ExprBase": {
+                            "Pos": 4390913,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 3,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        }
+                      ]
+                    }
+                  },
+                  "Later": false,
+                  "AssignOnce": true,
+                  "OutParam": false
+                }
+              },
+              "Index": {
+                "ExprBase": {
+                  "Pos": 6750209,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 3,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "Composite": null
+            },
+            "Later": false,
+            "AssignOnce": false,
+            "OutParam": false
+          }
+        }
+      ],
+      "Inner": {
+        "Outer": {
+          "Outer": {
+            "Outer": null,
+            "Names": [
+              "Вещ64",
+              "Строка",
+              "истина",
+              "Байт",
+              "Цел64",
+              "Строка8",
+              "Слово64",
+              "Символ",
+              "тег",
+              "Лог",
+              "Пусто",
+              "длина",
+              "нечто",
+              "ложь",
+              "пусто"
+            ]
+          },
+          "Names": [
+            "А"
+          ]
+        },
+        "Names": [
+          "а",
+          "н"
+        ]
+      }
+    }
+  },
+  "Inner": {
+    "Outer": {
+      "Outer": null,
+      "Names": [
+        "Слово64",
+        "Символ",
+        "Строка8",
+        "Лог",
+        "Пусто",
+        "тег",
+        "ложь",
+        "пусто",
+        "длина",
+        "нечто",
+        "Байт",
+        "Цел64",
+        "Вещ64",
+        "Строка",
+        "истина"
+      ]
+    },
+    "Names": [
+      "А"
+    ]
+  },
+  "Setting": null
+}

@@ -1,0 +1,348 @@
+﻿{
+  "Pos": 65537,
+  "Name": "x",
+  "Imports": [],
+  "Decl": [
+    {
+      "DeclBase": {
+        "Pos": 1048577,
+        "Name": "привет1",
+        "Typ": {
+          "TypeBase": {
+            "Pos": 1507329
+          },
+          "Name:": "фн",
+          "Params": null,
+          "ReturnTyp": null
+        },
+        "Exported": false,
+        "Host": null
+      },
+      "Recv": null,
+      "Seq": {
+        "StatementBase": {
+          "Pos": 2162689
+        },
+        "Statements": [
+          {
+            "StatementBase": {
+              "Pos": 3342337
+            },
+            "D": {
+              "DeclBase": {
+                "Pos": 2555905,
+                "Name": "ч",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 2883585,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 1,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "Later": false,
+              "AssignOnce": false,
+              "OutParam": false
+            }
+          },
+          {
+            "StatementBase": {
+              "Pos": 4259841
+            },
+            "D": {
+              "DeclBase": {
+                "Pos": 3735553,
+                "Name": "x",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 0
+                  },
+                  "Name": "Цел64"
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 4063233,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 1,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "Later": false,
+              "AssignOnce": false,
+              "OutParam": false
+            }
+          }
+        ],
+        "Inner": {
+          "Outer": {
+            "Outer": {
+              "Outer": null,
+              "Names": [
+                "Вещ64",
+                "Пусто",
+                "истина",
+                "пусто",
+                "нечто",
+                "тег",
+                "Цел64",
+                "Строка",
+                "Строка8",
+                "ложь",
+                "длина",
+                "Байт",
+                "Слово64",
+                "Лог",
+                "Символ"
+              ]
+            },
+            "Names": [
+              "привет1"
+            ]
+          },
+          "Names": [
+            "ч",
+            "x"
+          ]
+        }
+      },
+      "External": false,
+      "Mod": null
+    }
+  ],
+  "Entry": {
+    "Pos": 4587521,
+    "Seq": {
+      "StatementBase": {
+        "Pos": 5373953
+      },
+      "Statements": [
+        {
+          "StatementBase": {
+            "Pos": 6094849
+          },
+          "Call": {
+            "ExprBase": {
+              "Pos": 5832705,
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 0
+                },
+                "Name": "нет результата"
+              },
+              "ReadOnly": false
+            },
+            "X": {
+              "ExprBase": {
+                "Pos": 5373953,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 1507329
+                  },
+                  "Name:": "фн",
+                  "Params": null,
+                  "ReturnTyp": null
+                },
+                "ReadOnly": true
+              },
+              "Name": "привет1",
+              "Obj": {
+                "DeclBase": {
+                  "Pos": 1048577,
+                  "Name": "привет1",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1507329
+                    },
+                    "Name:": "фн",
+                    "Params": null,
+                    "ReturnTyp": null
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Recv": null,
+                "Seq": {
+                  "StatementBase": {
+                    "Pos": 2162689
+                  },
+                  "Statements": [
+                    {
+                      "StatementBase": {
+                        "Pos": 3342337
+                      },
+                      "D": {
+                        "DeclBase": {
+                          "Pos": 2555905,
+                          "Name": "ч",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2883585,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 1,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "Later": false,
+                        "AssignOnce": false,
+                        "OutParam": false
+                      }
+                    },
+                    {
+                      "StatementBase": {
+                        "Pos": 4259841
+                      },
+                      "D": {
+                        "DeclBase": {
+                          "Pos": 3735553,
+                          "Name": "x",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 4063233,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 1,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "Later": false,
+                        "AssignOnce": false,
+                        "OutParam": false
+                      }
+                    }
+                  ],
+                  "Inner": {
+                    "Outer": {
+                      "Outer": {
+                        "Outer": null,
+                        "Names": [
+                          "ложь",
+                          "длина",
+                          "тег",
+                          "Цел64",
+                          "Строка",
+                          "Строка8",
+                          "Символ",
+                          "Байт",
+                          "Слово64",
+                          "Лог",
+                          "Вещ64",
+                          "Пусто",
+                          "истина",
+                          "пусто",
+                          "нечто"
+                        ]
+                      },
+                      "Names": [
+                        "привет1"
+                      ]
+                    },
+                    "Names": [
+                      "ч",
+                      "x"
+                    ]
+                  }
+                },
+                "External": false,
+                "Mod": null
+              }
+            },
+            "Args": [],
+            "StdFunc": null
+          }
+        }
+      ],
+      "Inner": null
+    }
+  },
+  "Inner": {
+    "Outer": {
+      "Outer": null,
+      "Names": [
+        "Байт",
+        "Слово64",
+        "Лог",
+        "Символ",
+        "Вещ64",
+        "Пусто",
+        "истина",
+        "пусто",
+        "нечто",
+        "Цел64",
+        "Строка",
+        "Строка8",
+        "ложь",
+        "длина",
+        "тег"
+      ]
+    },
+    "Names": [
+      "привет1"
+    ]
+  },
+  "Setting": null
+}

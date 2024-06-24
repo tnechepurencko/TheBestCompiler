@@ -1,0 +1,3313 @@
+﻿{
+  "Pos": 65537,
+  "Name": "x",
+  "Imports": [],
+  "Decl": [
+    {
+      "DeclBase": {
+        "Pos": 1114113,
+        "Name": "W",
+        "Typ": {
+          "TypeBase": {
+            "Pos": 1376257
+          },
+          "BaseTyp": null,
+          "Fields": [
+            {
+              "DeclBase": {
+                "Pos": 2097153,
+                "Name": "ц",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 2293761
+                  },
+                  "TypeName": "Цел64",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 0,
+                      "Name": "Цел64",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  }
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 2818049,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 7,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "AssignOnce": true,
+              "Later": false
+            },
+            {
+              "DeclBase": {
+                "Pos": 3145729,
+                "Name": "л",
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 3342337
+                  },
+                  "TypeName": "Цел64",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 0,
+                      "Name": "Цел64",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  }
+                },
+                "Exported": false,
+                "Host": null
+              },
+              "Init": {
+                "ExprBase": {
+                  "Pos": 3866625,
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 0
+                    },
+                    "Name": "Цел64"
+                  },
+                  "ReadOnly": true
+                },
+                "Kind": 0,
+                "IntVal": 4,
+                "WordVal": 0,
+                "Float.Str": "",
+                "StrVal": ""
+              },
+              "AssignOnce": true,
+              "Later": false
+            }
+          ],
+          "Methods": [],
+          "Members": [
+            {
+              "ц": {
+                "DeclBase": {
+                  "Pos": 2097153,
+                  "Name": "ц",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 2293761
+                    },
+                    "TypeName": "Цел64",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 0,
+                        "Name": "Цел64",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    }
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Init": {
+                  "ExprBase": {
+                    "Pos": 2818049,
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    },
+                    "ReadOnly": true
+                  },
+                  "Kind": 0,
+                  "IntVal": 7,
+                  "WordVal": 0,
+                  "Float.Str": "",
+                  "StrVal": ""
+                },
+                "AssignOnce": true,
+                "Later": false
+              }
+            },
+            {
+              "л": {
+                "DeclBase": {
+                  "Pos": 3145729,
+                  "Name": "л",
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 3342337
+                    },
+                    "TypeName": "Цел64",
+                    "ModuleName": "",
+                    "TypeDecl": {
+                      "DeclBase": {
+                        "Pos": 0,
+                        "Name": "Цел64",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        },
+                        "Exported": false,
+                        "Host": null
+                      }
+                    },
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    }
+                  },
+                  "Exported": false,
+                  "Host": null
+                },
+                "Init": {
+                  "ExprBase": {
+                    "Pos": 3866625,
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 0
+                      },
+                      "Name": "Цел64"
+                    },
+                    "ReadOnly": true
+                  },
+                  "Kind": 0,
+                  "IntVal": 4,
+                  "WordVal": 0,
+                  "Float.Str": "",
+                  "StrVal": ""
+                },
+                "AssignOnce": true,
+                "Later": false
+              }
+            }
+          ]
+        },
+        "Exported": false,
+        "Host": null
+      }
+    }
+  ],
+  "Entry": {
+    "Pos": 4390913,
+    "Seq": {
+      "StatementBase": {
+        "Pos": 5046273
+      },
+      "Statements": [
+        {
+          "StatementBase": {
+            "Pos": 6619137
+          },
+          "D": {
+            "DeclBase": {
+              "Pos": 5439489,
+              "Name": "ч1",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 5767169
+                },
+                "TypeName": "W",
+                "ModuleName": "",
+                "TypeDecl": {
+                  "DeclBase": {
+                    "Pos": 1114113,
+                    "Name": "W",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "BaseTyp": null,
+                      "Fields": [
+                        {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        },
+                        {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      ],
+                      "Methods": [],
+                      "Members": [
+                        {
+                          "ц": {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        },
+                        {
+                          "л": {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        }
+                      ]
+                    },
+                    "Exported": false,
+                    "Host": null
+                  }
+                },
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 1376257
+                  },
+                  "BaseTyp": null,
+                  "Fields": [
+                    {
+                      "DeclBase": {
+                        "Pos": 2097153,
+                        "Name": "ц",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 2293761
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      },
+                      "Init": {
+                        "ExprBase": {
+                          "Pos": 2818049,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 7,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      "AssignOnce": true,
+                      "Later": false
+                    },
+                    {
+                      "DeclBase": {
+                        "Pos": 3145729,
+                        "Name": "л",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 3342337
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      },
+                      "Init": {
+                        "ExprBase": {
+                          "Pos": 3866625,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 4,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      "AssignOnce": true,
+                      "Later": false
+                    }
+                  ],
+                  "Methods": [],
+                  "Members": [
+                    {
+                      "ц": {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    },
+                    {
+                      "л": {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    }
+                  ]
+                }
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 5832705,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 5767169
+                  },
+                  "TypeName": "W",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "W",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "BaseTyp": null,
+                        "Fields": [
+                          {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          },
+                          {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        ],
+                        "Methods": [],
+                        "Members": [
+                          {
+                            "ц": {
+                              "DeclBase": {
+                                "Pos": 2097153,
+                                "Name": "ц",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 2293761
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 2818049,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 7,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          },
+                          {
+                            "л": {
+                              "DeclBase": {
+                                "Pos": 3145729,
+                                "Name": "л",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 3342337
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 3866625,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 4,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          }
+                        ]
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "BaseTyp": null,
+                    "Fields": [
+                      {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      },
+                      {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    ],
+                    "Methods": [],
+                    "Members": [
+                      {
+                        "ц": {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      },
+                      {
+                        "л": {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      }
+                    ]
+                  }
+                },
+                "ReadOnly": false
+              },
+              "X": {
+                "ExprBase": {
+                  "Pos": 5767169,
+                  "Typ": null,
+                  "ReadOnly": false
+                },
+                "Name": "W",
+                "Obj": {
+                  "TypeBase": {
+                    "Pos": 5767169
+                  },
+                  "TypeName": "W",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "W",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "BaseTyp": null,
+                        "Fields": [
+                          {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          },
+                          {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        ],
+                        "Methods": [],
+                        "Members": [
+                          {
+                            "л": {
+                              "DeclBase": {
+                                "Pos": 3145729,
+                                "Name": "л",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 3342337
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 3866625,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 4,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          },
+                          {
+                            "ц": {
+                              "DeclBase": {
+                                "Pos": 2097153,
+                                "Name": "ц",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 2293761
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 2818049,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 7,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          }
+                        ]
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "BaseTyp": null,
+                    "Fields": [
+                      {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      },
+                      {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    ],
+                    "Methods": [],
+                    "Members": [
+                      {
+                        "ц": {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      },
+                      {
+                        "л": {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "Values": [
+                {
+                  "Pos": 5898241,
+                  "Name": "ц",
+                  "Field": {
+                    "DeclBase": {
+                      "Pos": 2097153,
+                      "Name": "ц",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 2293761
+                        },
+                        "TypeName": "Цел64",
+                        "ModuleName": "",
+                        "TypeDecl": {
+                          "DeclBase": {
+                            "Pos": 0,
+                            "Name": "Цел64",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "Exported": false,
+                            "Host": null
+                          }
+                        },
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        }
+                      },
+                      "Exported": false,
+                      "Host": null
+                    },
+                    "Init": {
+                      "ExprBase": {
+                        "Pos": 2818049,
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 0
+                          },
+                          "Name": "Цел64"
+                        },
+                        "ReadOnly": true
+                      },
+                      "Kind": 0,
+                      "IntVal": 7,
+                      "WordVal": 0,
+                      "Float.Str": "",
+                      "StrVal": ""
+                    },
+                    "AssignOnce": true,
+                    "Later": false
+                  },
+                  "Value": {
+                    "ExprBase": {
+                      "Pos": 6094849,
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 0
+                        },
+                        "Name": "Цел64"
+                      },
+                      "ReadOnly": true
+                    },
+                    "Kind": 0,
+                    "IntVal": 999,
+                    "WordVal": 0,
+                    "Float.Str": "",
+                    "StrVal": ""
+                  }
+                }
+              ]
+            },
+            "Later": false,
+            "AssignOnce": true,
+            "OutParam": false
+          }
+        },
+        {
+          "StatementBase": {
+            "Pos": 7667713
+          },
+          "D": {
+            "DeclBase": {
+              "Pos": 7012353,
+              "Name": "ч2",
+              "Typ": {
+                "TypeBase": {
+                  "Pos": 7340033
+                },
+                "TypeName": "W",
+                "ModuleName": "",
+                "TypeDecl": {
+                  "DeclBase": {
+                    "Pos": 1114113,
+                    "Name": "W",
+                    "Typ": {
+                      "TypeBase": {
+                        "Pos": 1376257
+                      },
+                      "BaseTyp": null,
+                      "Fields": [
+                        {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        },
+                        {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      ],
+                      "Methods": [],
+                      "Members": [
+                        {
+                          "ц": {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        },
+                        {
+                          "л": {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        }
+                      ]
+                    },
+                    "Exported": false,
+                    "Host": null
+                  }
+                },
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 1376257
+                  },
+                  "BaseTyp": null,
+                  "Fields": [
+                    {
+                      "DeclBase": {
+                        "Pos": 2097153,
+                        "Name": "ц",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 2293761
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      },
+                      "Init": {
+                        "ExprBase": {
+                          "Pos": 2818049,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 7,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      "AssignOnce": true,
+                      "Later": false
+                    },
+                    {
+                      "DeclBase": {
+                        "Pos": 3145729,
+                        "Name": "л",
+                        "Typ": {
+                          "TypeBase": {
+                            "Pos": 3342337
+                          },
+                          "TypeName": "Цел64",
+                          "ModuleName": "",
+                          "TypeDecl": {
+                            "DeclBase": {
+                              "Pos": 0,
+                              "Name": "Цел64",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "Exported": false,
+                              "Host": null
+                            }
+                          },
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          }
+                        },
+                        "Exported": false,
+                        "Host": null
+                      },
+                      "Init": {
+                        "ExprBase": {
+                          "Pos": 3866625,
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 0
+                            },
+                            "Name": "Цел64"
+                          },
+                          "ReadOnly": true
+                        },
+                        "Kind": 0,
+                        "IntVal": 4,
+                        "WordVal": 0,
+                        "Float.Str": "",
+                        "StrVal": ""
+                      },
+                      "AssignOnce": true,
+                      "Later": false
+                    }
+                  ],
+                  "Methods": [],
+                  "Members": [
+                    {
+                      "ц": {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    },
+                    {
+                      "л": {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    }
+                  ]
+                }
+              },
+              "Exported": false,
+              "Host": null
+            },
+            "Init": {
+              "ExprBase": {
+                "Pos": 7405569,
+                "Typ": {
+                  "TypeBase": {
+                    "Pos": 7340033
+                  },
+                  "TypeName": "W",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "W",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "BaseTyp": null,
+                        "Fields": [
+                          {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          },
+                          {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        ],
+                        "Methods": [],
+                        "Members": [
+                          {
+                            "л": {
+                              "DeclBase": {
+                                "Pos": 3145729,
+                                "Name": "л",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 3342337
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 3866625,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 4,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          },
+                          {
+                            "ц": {
+                              "DeclBase": {
+                                "Pos": 2097153,
+                                "Name": "ц",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 2293761
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 2818049,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 7,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          }
+                        ]
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "BaseTyp": null,
+                    "Fields": [
+                      {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      },
+                      {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    ],
+                    "Methods": [],
+                    "Members": [
+                      {
+                        "л": {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      },
+                      {
+                        "ц": {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      }
+                    ]
+                  }
+                },
+                "ReadOnly": false
+              },
+              "X": {
+                "ExprBase": {
+                  "Pos": 7340033,
+                  "Typ": null,
+                  "ReadOnly": false
+                },
+                "Name": "W",
+                "Obj": {
+                  "TypeBase": {
+                    "Pos": 7340033
+                  },
+                  "TypeName": "W",
+                  "ModuleName": "",
+                  "TypeDecl": {
+                    "DeclBase": {
+                      "Pos": 1114113,
+                      "Name": "W",
+                      "Typ": {
+                        "TypeBase": {
+                          "Pos": 1376257
+                        },
+                        "BaseTyp": null,
+                        "Fields": [
+                          {
+                            "DeclBase": {
+                              "Pos": 2097153,
+                              "Name": "ц",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 2293761
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 2818049,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 7,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          },
+                          {
+                            "DeclBase": {
+                              "Pos": 3145729,
+                              "Name": "л",
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 3342337
+                                },
+                                "TypeName": "Цел64",
+                                "ModuleName": "",
+                                "TypeDecl": {
+                                  "DeclBase": {
+                                    "Pos": 0,
+                                    "Name": "Цел64",
+                                    "Typ": {
+                                      "TypeBase": {
+                                        "Pos": 0
+                                      },
+                                      "Name": "Цел64"
+                                    },
+                                    "Exported": false,
+                                    "Host": null
+                                  }
+                                },
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                }
+                              },
+                              "Exported": false,
+                              "Host": null
+                            },
+                            "Init": {
+                              "ExprBase": {
+                                "Pos": 3866625,
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "ReadOnly": true
+                              },
+                              "Kind": 0,
+                              "IntVal": 4,
+                              "WordVal": 0,
+                              "Float.Str": "",
+                              "StrVal": ""
+                            },
+                            "AssignOnce": true,
+                            "Later": false
+                          }
+                        ],
+                        "Methods": [],
+                        "Members": [
+                          {
+                            "ц": {
+                              "DeclBase": {
+                                "Pos": 2097153,
+                                "Name": "ц",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 2293761
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 2818049,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 7,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          },
+                          {
+                            "л": {
+                              "DeclBase": {
+                                "Pos": 3145729,
+                                "Name": "л",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 3342337
+                                  },
+                                  "TypeName": "Цел64",
+                                  "ModuleName": "",
+                                  "TypeDecl": {
+                                    "DeclBase": {
+                                      "Pos": 0,
+                                      "Name": "Цел64",
+                                      "Typ": {
+                                        "TypeBase": {
+                                          "Pos": 0
+                                        },
+                                        "Name": "Цел64"
+                                      },
+                                      "Exported": false,
+                                      "Host": null
+                                    }
+                                  },
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  }
+                                },
+                                "Exported": false,
+                                "Host": null
+                              },
+                              "Init": {
+                                "ExprBase": {
+                                  "Pos": 3866625,
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "ReadOnly": true
+                                },
+                                "Kind": 0,
+                                "IntVal": 4,
+                                "WordVal": 0,
+                                "Float.Str": "",
+                                "StrVal": ""
+                              },
+                              "AssignOnce": true,
+                              "Later": false
+                            }
+                          }
+                        ]
+                      },
+                      "Exported": false,
+                      "Host": null
+                    }
+                  },
+                  "Typ": {
+                    "TypeBase": {
+                      "Pos": 1376257
+                    },
+                    "BaseTyp": null,
+                    "Fields": [
+                      {
+                        "DeclBase": {
+                          "Pos": 2097153,
+                          "Name": "ц",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 2293761
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 2818049,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 7,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      },
+                      {
+                        "DeclBase": {
+                          "Pos": 3145729,
+                          "Name": "л",
+                          "Typ": {
+                            "TypeBase": {
+                              "Pos": 3342337
+                            },
+                            "TypeName": "Цел64",
+                            "ModuleName": "",
+                            "TypeDecl": {
+                              "DeclBase": {
+                                "Pos": 0,
+                                "Name": "Цел64",
+                                "Typ": {
+                                  "TypeBase": {
+                                    "Pos": 0
+                                  },
+                                  "Name": "Цел64"
+                                },
+                                "Exported": false,
+                                "Host": null
+                              }
+                            },
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            }
+                          },
+                          "Exported": false,
+                          "Host": null
+                        },
+                        "Init": {
+                          "ExprBase": {
+                            "Pos": 3866625,
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 0
+                              },
+                              "Name": "Цел64"
+                            },
+                            "ReadOnly": true
+                          },
+                          "Kind": 0,
+                          "IntVal": 4,
+                          "WordVal": 0,
+                          "Float.Str": "",
+                          "StrVal": ""
+                        },
+                        "AssignOnce": true,
+                        "Later": false
+                      }
+                    ],
+                    "Methods": [],
+                    "Members": [
+                      {
+                        "ц": {
+                          "DeclBase": {
+                            "Pos": 2097153,
+                            "Name": "ц",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 2293761
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 2818049,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 7,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      },
+                      {
+                        "л": {
+                          "DeclBase": {
+                            "Pos": 3145729,
+                            "Name": "л",
+                            "Typ": {
+                              "TypeBase": {
+                                "Pos": 3342337
+                              },
+                              "TypeName": "Цел64",
+                              "ModuleName": "",
+                              "TypeDecl": {
+                                "DeclBase": {
+                                  "Pos": 0,
+                                  "Name": "Цел64",
+                                  "Typ": {
+                                    "TypeBase": {
+                                      "Pos": 0
+                                    },
+                                    "Name": "Цел64"
+                                  },
+                                  "Exported": false,
+                                  "Host": null
+                                }
+                              },
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              }
+                            },
+                            "Exported": false,
+                            "Host": null
+                          },
+                          "Init": {
+                            "ExprBase": {
+                              "Pos": 3866625,
+                              "Typ": {
+                                "TypeBase": {
+                                  "Pos": 0
+                                },
+                                "Name": "Цел64"
+                              },
+                              "ReadOnly": true
+                            },
+                            "Kind": 0,
+                            "IntVal": 4,
+                            "WordVal": 0,
+                            "Float.Str": "",
+                            "StrVal": ""
+                          },
+                          "AssignOnce": true,
+                          "Later": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "Values": []
+            },
+            "Later": false,
+            "AssignOnce": true,
+            "OutParam": false
+          }
+        }
+      ],
+      "Inner": {
+        "Outer": {
+          "Outer": {
+            "Outer": null,
+            "Names": [
+              "Строка8",
+              "тег",
+              "Байт",
+              "Цел64",
+              "Пусто",
+              "Лог",
+              "Строка",
+              "истина",
+              "Вещ64",
+              "Слово64",
+              "Символ",
+              "ложь",
+              "пусто",
+              "длина",
+              "нечто"
+            ]
+          },
+          "Names": [
+            "W"
+          ]
+        },
+        "Names": [
+          "ч1",
+          "ч2"
+        ]
+      }
+    }
+  },
+  "Inner": {
+    "Outer": {
+      "Outer": null,
+      "Names": [
+        "Пусто",
+        "Байт",
+        "Цел64",
+        "истина",
+        "Лог",
+        "Строка",
+        "Символ",
+        "ложь",
+        "пусто",
+        "длина",
+        "нечто",
+        "Вещ64",
+        "Слово64",
+        "Строка8",
+        "тег"
+      ]
+    },
+    "Names": [
+      "W"
+    ]
+  },
+  "Setting": null
+}
